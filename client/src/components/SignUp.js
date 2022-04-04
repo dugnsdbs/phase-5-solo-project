@@ -10,12 +10,12 @@ function SignUp({ setUser, handleReroute }) {
   const [email, setEmail] = useState("")
   const [photo, setPhoto] = useState("")
 
-  function handleSignup(e){
+  function handleSignUp(e){
     e.preventDefault()
     fetch("/signup", {
-      method: "POST", 
+      method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username, 
@@ -27,36 +27,37 @@ function SignUp({ setUser, handleReroute }) {
       }),
     })
     .then((r) => r.json())
-    .then((data) => setUser(data))
-    // if (data.errors)
-    // {
-    //   data.errors.forEach(e => e === "Age must be greater than or equal to 18" ? alert("Must be 18 or older") : alert(e))
-    // }
-    // else{
-    //   setUser(data)
-    //   setUsername('')
-    //   setPassword("")
-    //   setPasswordConfirmation("")
-    //   setName("")
-    //   setAge("")
-    //   setEmail("")
-    //   setLocation("")
-    //   setPhoto("")
-    //   setBio("")
-  alert("Profile Successfully Created! Please Log In.")
-  .then(()=>handleReroute())
+    .then((data) => {
+      if (data.errors)
+      {
+        data.errors.forEach(e => e === "Age must be greater than or equal to 18" ? alert("Must be 18 or older") : alert(e))
+      }
+      else{
+        // setUser(data)
+        setUsername('')
+        setPassword("")
+        setPasswordConfirmation("")
+        setName("")
+        setEmail("")
+        setPhoto("")
+        alert("Profile Successfully Created! Please Log In.")
+        handleReroute()
+      }
+    })
+    .then(()=>handleReroute())
   }
+
 
   const signupBox = (
     <div>
-      <form onSubmit={handleSignup}>
+      <form onSubmit={handleSignUp}>
         <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
         <input type="text" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         <input type="text" placeholder="Password-Confirmation" value={passwordConfirmantion} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
         <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
         <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
         <input type="text" placeholder="Photo" value={photo} onChange={(e) => setPhoto(e.target.value)}/>
-        <button type="submit">Submit</button>
+        <input type="submit"/>
       </form>
     </div>
   )

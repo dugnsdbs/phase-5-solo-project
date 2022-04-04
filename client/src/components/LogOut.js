@@ -1,8 +1,21 @@
 import React from 'react'
 
-function LogOut() {
+function LogOut({ setUser, handleReroute}) {
+
+  function handleLogout(){
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => {
+    setUser()
+    alert("Good bye!! See you Later!!")
+    })
+    .then(() => handleReroute())
+  }
+
   return (
-    <div>LogOut</div>
+    <div> 
+      <button onClick={handleLogout}>LogOut</button>
+      </div>
   )
 }
 
