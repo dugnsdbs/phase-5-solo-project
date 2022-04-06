@@ -5,10 +5,15 @@ import LogOut from "./components/LogOut";
 import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
 import SignUp from "./components/SignUp";
+import Activity from "./components/Activity";
+import List from "./components/List"
 
 function App() {
 
   const [user, setUser] = useState(null)
+  const [activity, setActivity] = useState(null)
+  const [list, setList] = useState(null)
+
 
   useEffect(()=>{
     fetch("/me").then((r) => {
@@ -18,25 +23,39 @@ function App() {
     });
   },[])
 
+  useEffect(()=> {
+    fetch("/activities").then((r) => {
+      if (r.ok){
+        r.json().then((activities)=> setActivity(activities));
+      }
+    });
+  },[])
+
+  useEffect(()=> {
+    fetch("/lists").then((r) => {
+      if (r.ok){
+        r.json().then((activities)=> setList(activities));
+      }
+    });
+  },[])
+
+
   const history =useHistory()
   const handleReroute = () => {
-    console.log("Reroute!")
     history.push("/");
     }
-    const welcome = (user ? `Hi ${user.name} !` : "Login Please")
-  console.log(welcome)
+
+
+    const currentUser = (user ? `Hi ${user.name} !` : "Login Please")
 
   return (
     <div >
       <div>
-        <h1>{welcome}</h1>
+        <h1>{currentUser}</h1>
       </div>
       <div>
         <Navbar user={user}/> 
-          <Switch>
-            <Route exact path = "/me">
-              <Profile/>
-            </Route>
+          <Switch> 
             <Route exact path = "/signup" >
               <SignUp setUser={setUser} handleReroute={handleReroute}/> 
             </Route>
@@ -45,6 +64,15 @@ function App() {
             </Route>
             <Route exact path = "/logout">
               <LogOut setUser={setUser} handleReroute={handleReroute}/>
+            </Route>
+            <Route exact path = "/me">
+              <Profile user={user} handleReroute={handleReroute} setUser={setUser}/>
+            </Route>
+            <Route exact path = "/createList">
+              <List  user={user} list={list} setList={setList}/>
+            </Route>
+            <Route exact path = "/createActivity">
+              <Activity handleReroute={handleReroute} user={user} setActivity={setActivity} activity={activity} list={list}/>
             </Route>
           </Switch>
       </div>

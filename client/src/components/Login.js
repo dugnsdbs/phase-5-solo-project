@@ -12,13 +12,13 @@ function Login({handleReroute, setUser}){
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({username, password})
+      body: JSON.stringify({username: username, password: password})
     })
     .then((r) => r.json())
     .then((user) => (user.username ? setUser(user) : alert(user.error)))
     .then(()=>handleReroute())
-    setUsername("")
-    setPassword("")
+    // setUsername("")
+    // setPassword("")
   }
 
   const loginBox = (

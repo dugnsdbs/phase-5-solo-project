@@ -12,6 +12,12 @@ function Navbar({user}){
           <NavLink exact to ="/logout">
             <button >Logout</button>
           </NavLink>
+          <NavLink exact to ="/createList">
+            <button >Create List First</button>
+          </NavLink>
+          <NavLink exact to ="/createActivity">
+            <button >Write Act</button>
+          </NavLink>
           <NavLink exact to ="/me">
             <button >Profile</button>
           </NavLink>

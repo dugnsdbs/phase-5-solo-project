@@ -30,7 +30,7 @@ function SignUp({ setUser, handleReroute }) {
     .then((data) => {
       if (data.errors)
       {
-        data.errors.forEach(e => e === "Age must be greater than or equal to 18" ? alert("Must be 18 or older") : alert(e))
+        data.errors.forEach(e => alert(e))
       }
       else{
         // setUser(data)
