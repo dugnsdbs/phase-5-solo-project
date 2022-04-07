@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_05_170425) do
+ActiveRecord::Schema.define(version: 2022_04_07_182225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.string "location"
-    t.string "title"
+    t.string "date"
     t.string "time"
     t.string "memo"
     t.boolean "complete", default: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2022_04_05_170425) do
   end
 
   create_table "lists", force: :cascade do |t|
-    t.string "date"
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 2022_04_05_170425) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "weathers", force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_weathers_on_activity_id"
+  end
+
   add_foreign_key "activities", "lists"
   add_foreign_key "activities", "users"
+  add_foreign_key "weathers", "activities"
 end

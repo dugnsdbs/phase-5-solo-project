@@ -2,21 +2,24 @@ import React from 'react'
 
 function AllUserActivity({user, activity}) {
 
-  const currentUsername = user? user.name: null
-
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); 
   var yyyy = today.getFullYear();
   today = `${yyyy}-${mm}-${dd}`;
 
-  const userActivities = activity.filter((a)=> a.user.username ===currentUsername  && a.list.date >= today)
+
+  const currentUsername = user? user.username: null
+  const userActivities = activity.filter((a)=> a.user.username === currentUsername && a.date > today)
+
+  console.log(userActivities)
+
 
   const allUserActivities = userActivities.map((a) => {
     return (
       <div key={a.id}>
-      <p>TITLE: {a.title}</p>
-      <span>Date: {a.list.date}</span>
+      <p>TITLE: {a.list.title}</p>
+      <span>Date: {a.date}</span>
       <br/>
       <span>LOCATION: {a.location}</span>
       <br/>

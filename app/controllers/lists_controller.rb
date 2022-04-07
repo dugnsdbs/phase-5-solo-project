@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
   def index 
-    lists = List.all.order(:date)
+    lists = List.all
     render json: lists, status: :ok
   end
 
@@ -13,7 +13,7 @@ class ListsController < ApplicationController
   def create 
     list = List.create(list_params)
     # if list.valid?
-    if list.valid?
+    if current_user && list
       render json: list, status: :created
     else
       render json: { errors: list.errors.full_messages },
@@ -23,7 +23,7 @@ class ListsController < ApplicationController
 
   def update 
     list = List.find(params[:id])
-    if list.valid?
+    if current_user
       list.update(list_params)
       render json: list
     else
@@ -40,7 +40,7 @@ class ListsController < ApplicationController
 private 
 
   def list_params
-    params.permit(:date)
+    params.permit(:title)
   end
 
 end

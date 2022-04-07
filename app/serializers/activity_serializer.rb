@@ -1,5 +1,5 @@
 class ActivitySerializer < ActiveModel::Serializer
-  attributes :id, :location,:title,:time, :memo, :complete
+  attributes :id, :location, :date,:time, :memo, :complete
   has_one :user
   has_one :list
 end

@@ -6,21 +6,33 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
 
   //** Calendar List section **
 
-  const [date, setDate] = useState([])
+  const [title, setTitle] = useState([])
   const [showActivity, setShowActivity] = useState(false)
 
-  function handleDate(e){
+  function handleTitle(e){
     e.preventDefault()
     fetch("/createList",{
       method: "POST",
       headers: {
         "Content-Type" : "application/json"
       },
-      body: JSON.stringify ({ date })
+      body: JSON.stringify ({ title })
     })
       .then((r) => r.json())
-      .then((date) => setList(date))
-  }
+      .then((title) => {
+        if (title.errors)
+        {
+          title.errors.forEach(e => alert(e))
+        }
+        else{
+          setList(title)
+          // setTitle('')
+          // handleReroute()
+        }
+      })
+      // .then(()=>handleReroute())
+    }
+  
 
   function handleShowActivity(){
     setShowActivity(!showActivity)
@@ -28,8 +40,8 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
  
   const dateBox = (
     <div>
-      <form onSubmit={handleDate}>
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
+      <form onSubmit={handleTitle}>
+        <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
         <input  onClick={handleShowActivity} type="submit"/>
       </form>
     </div>
@@ -40,7 +52,7 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
   const [memo, setMemo] = useState([])
   const [location, setLocation] = useState([])
   const [time, setTime] = useState([])
-  const [title, setTitle] = useState([])
+  const [date, setDate] = useState([])
 
 
   function handleActivitiy(e){
@@ -53,14 +65,15 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
       body: JSON.stringify({
         "user_id": user.id,
         "list_id": list.id,
-        "title":title, 
+        "date":date, 
         "memo":memo, 
         "location":location,
         "time":time
       }),
     })
     .then((r) => r.json())
-    .then((data) => {
+    .then((data) => 
+    {
       if (data.errors)
       {
         data.errors.forEach(e => alert(e))
@@ -69,20 +82,20 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
         setActivity([...activity,data])
         setMemo('')
         setLocation("")
-        setTitle("")
+        setDate("")
         setTime("")
         alert("To do List has been created!!!")
         // handleReroute()
       }
     })
-    // .then(()=>handleReroute())
+    .then(()=>handleReroute())
   }
 
   const toDoItem = (
     <div>
       <form onSubmit={handleActivitiy}>
         <input type="text" placeholder ="Location" value={location} onChange={(e) =>setLocation(e.target.value)}/>
-        <input type ="text" placeholder ="Title" value={title} onChange={(e) =>setTitle(e.target.value)}/>
+        <input type ="date" placeholder ="Title" value={date} onChange={(e) =>setDate(e.target.value)}/>
         <input type ="time" placeholder ="Time" value={time} onChange={(e) =>setTime(e.target.value)}/>
         <input type="text" placeholder ="Memo" value={memo} onChange={(e) =>setMemo(e.target.value)}/>
         <input type="submit"/>
@@ -96,13 +109,13 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
 
   return (
     <div>
-      {dateBox}
-      {activities}
-      <br/>
-      <div>
-        Upcoming Event
+      <div>  
+         {dateBox}
       </div>
-      <AllUserActivity user={user} activity={activity}/>
+      <br/>
+      <div>   
+        {activities}
+      </div>
     </div>
   )
 }

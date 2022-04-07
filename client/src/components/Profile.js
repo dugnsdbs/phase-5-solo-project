@@ -10,11 +10,6 @@ function Profile({user, setUser}) {
   const [email, setEmail] = useState("")
   const [photo, setPhoto] = useState("")
 
-  // const history =useHistory()
-  // const handleReroutes = () => {
-  //   console.log("Reroute!")
-  //   history.push("/me");
-  //   }
   function fetchUser(){
     fetch("/me").then((response) => {
       if (response.ok) {

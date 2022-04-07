@@ -14,7 +14,7 @@ class ActivitiesController < ApplicationController
 
   def create 
     activity = Activity.create(activity_params)
-    if activity && current_user
+    if current_user && activity
       render json: activity, status: :created
     else
       render json: { errors: activity.errors.full_messages },
@@ -40,7 +40,7 @@ class ActivitiesController < ApplicationController
 private 
 
   def activity_params
-    params.permit(:user_id, :list_id, :location, :title, :time, :memo, :complete)
+    params.permit(:user_id, :list_id, :location, :date, :time, :memo, :complete)
   end
 
 end

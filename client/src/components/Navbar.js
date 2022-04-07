@@ -9,16 +9,13 @@ function Navbar({user}){
           <NavLink exact to ="/">
             <button >Home</button>
           </NavLink>
-          <NavLink exact to ="/createList">
-            <button >Create List First</button>
-          </NavLink>
-          {/* <NavLink exact to ="/createActivity">
-            <button >Write Act</button>
+          {/* <NavLink exact to ="/createList">
+            <button >ToDoList Create</button>
           </NavLink> */}
-          <NavLink exact to ="/me">
+          <NavLink to ="/me">
             <button >Profile</button>
           </NavLink>  
-          <NavLink exact to ="/logout">
+          <NavLink  to ="/logout">
             <button >Logout</button>
           </NavLink>
         </div>
@@ -27,10 +24,10 @@ function Navbar({user}){
           <NavLink exact to ="/">
             <button >Home</button>
           </NavLink>
-          <NavLink exact to ="/signup">
+          <NavLink  to ="/signup">
             <button >Signup</button>
           </NavLink>
-          <NavLink exact to ="/login">
+          <NavLink  to ="/login">
             <button >Login</button>
           </NavLink>
         </div>

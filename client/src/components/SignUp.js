@@ -64,6 +64,7 @@ function SignUp({ setUser, handleReroute }) {
 
   return (
     <div>
+      SIGN UP
       {signupBox}
     </div>
   )
