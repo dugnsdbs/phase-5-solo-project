@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   # skip_before_action :authorized_user, only: [:create]
 
   def index 
-    activities = Activity.all 
+    activities = Activity.all
     render json: activities, status: :ok
   end
 

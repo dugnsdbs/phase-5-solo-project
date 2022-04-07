@@ -9,17 +9,17 @@ function Navbar({user}){
           <NavLink exact to ="/">
             <button >Home</button>
           </NavLink>
-          <NavLink exact to ="/logout">
-            <button >Logout</button>
-          </NavLink>
           <NavLink exact to ="/createList">
             <button >Create List First</button>
           </NavLink>
-          <NavLink exact to ="/createActivity">
+          {/* <NavLink exact to ="/createActivity">
             <button >Write Act</button>
-          </NavLink>
+          </NavLink> */}
           <NavLink exact to ="/me">
             <button >Profile</button>
+          </NavLink>  
+          <NavLink exact to ="/logout">
+            <button >Logout</button>
           </NavLink>
         </div>
         :

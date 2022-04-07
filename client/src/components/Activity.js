@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState , useEffect } from 'react'
 
+
 function Activity({handleReroute, user, setActivity, activity, list}) {
 
   const [memo, setMemo] = useState("")
@@ -8,10 +9,8 @@ function Activity({handleReroute, user, setActivity, activity, list}) {
   const [time, setTime] = useState("")
   const [title, setTitle] = useState("")
 
-  console.log(user.id)
-  console.log(list.id)
-
-
+  // console.log(user.id)
+  // console.log(list.id)
 
   function handleActivitiy(e){
     e.preventDefault()
@@ -36,7 +35,7 @@ function Activity({handleReroute, user, setActivity, activity, list}) {
         data.errors.forEach(e => alert(e))
       }
       else{
-        setActivity(data)
+        setActivity([...activity, data])
         setMemo('')
         setLocation("")
         setTitle("")
@@ -60,11 +59,11 @@ function Activity({handleReroute, user, setActivity, activity, list}) {
     </div>
   )
 
-  console.log("activity", activity)
-  console.log("list", activity.list)
-  console.log("date", activity.list.date)
-  console.log("user", activity.user)
-  console.log("name", activity.user.name)
+  // console.log("activity", activity)
+  // console.log("list", activity.list)
+  // console.log("date", activity.list.date)
+  // console.log("user", activity.user)
+  // console.log("name", activity.user.name)
 
   return (
     <div>

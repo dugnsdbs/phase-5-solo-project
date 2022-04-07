@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
   def index 
-    lists = List.all 
+    lists = List.all.order(:date)
     render json: lists, status: :ok
   end
 
