@@ -48,14 +48,15 @@ function App() {
     history.push("/");
     }
 
+  // delete Activities
   function handleDeleteProfile(e) {
     fetch(`/activities/${e.target.value}`, {
       method: "DELETE",
       })
-      .then(() => fetchUser())
+      .then(() => fetchActivities())
     }
-
-    function fetchUser(){
+    // refreshing diplay by using refetching
+    function fetchActivities(){
       fetch("/activities").then((response) => {
         if (response.ok) {
           response.json().then((data) => setActivity(data));
@@ -63,6 +64,50 @@ function App() {
       });
     }
 
+    // const [editTitle, setEditTitle] = useState("")
+    // const [editDate, setEditDate] = useState("")
+    // const [editMemo, setEditMemo] = useState("")
+    // const [editLocation, setEditLocation] = useState("")
+    // const [editTime, setEditTime] = useState("")
+  
+
+    // function handleEditActivity(e){
+    //   e.preventDefault()
+    //   fetch(`/activities/${e.target.value}`, {
+    //     method:"PATCH",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //       "title":editTitle,
+    //       "date":editDate,
+    //       "memo":editMemo,
+    //       "location":editLocation,
+    //       "time":editTime
+    //     })
+    //   })
+    //   .then((r) => r.json())
+    //   .then((data) => setActivity([...activity,data]))
+    //   .then(() => fetchActivities())
+    //       // alert("To do List updated!!")
+    //       // handleReroute()
+    //   }
+
+    //   const listEdit =(
+    //     <div>
+    //       <form onSubmit={handleEditActivity}>
+    //         <input type="text" value={editTitle} onChange={(e) => setEditTitle(e.target.value)} placeholder="title"/>
+    //         <input type="text" value={editLocation} onChange={(e) => setEditLocation(e.target.value)} placeholder="location"/>
+    //         <input type="date" value={editDate} onChange={(e) => setEditDate(e.target.value)}/>
+    //         <input type="time" value={editTime} onChange={(e) => setEditTime(e.target.value)}/>
+    //         <input type="text" value={editMemo} onChange={(e) => setEditMemo(e.target.value)} placeholder="memo"/>
+    //         <input type="submit"/> 
+    //       </form>
+    //     </div>
+    //   )
+ 
+
+    // main diplay greeting
     const currentUser = (user ? `Hi ${user.name} !`: 
     <div> 
       <span>Welcome!!</span> <br/>
@@ -80,9 +125,10 @@ function App() {
           <Route exact path = "/" >
               <h1>{currentUser}</h1>
               {user? <ToDoList user={user} list={list} setList={setList} setActivity={setActivity}  handleReroute={handleReroute} activity={activity}/> :null }
+              <br/>
               {user? <TodayUserActivity user={user} activity={activity} handleDeleteProfile={handleDeleteProfile} /> :null }
               <br/>
-              {user? <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile}/> :null }
+              {user? <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile} /> :null }
             </Route>
             <Route exact path = "/signup" >
               <SignUp setUser={setUser} handleReroute={handleReroute}/> 

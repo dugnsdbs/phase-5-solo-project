@@ -29,9 +29,9 @@ function Profile({user, setUser}) {
     setEdit(!edit)
   }
 
-  useEffect(() => {
-    fetchUser()
-  },[]);
+  // useEffect(() => {
+  //   fetchUser()
+  // },[]);
 
   function handleEditProfile(e){
     e.preventDefault()
