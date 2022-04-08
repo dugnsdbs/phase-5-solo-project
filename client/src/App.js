@@ -14,7 +14,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [activity, setActivity] = useState([])
   const [list, setList] = useState([])
-
+  
 // showing current user
   useEffect(()=>{
     fetch("/me").then((r) => {
@@ -31,9 +31,8 @@ function App() {
         r.json().then((activities)=> setActivity(activities));
       }
     });
-  },[], activity)
+  },[])
 
-  
   // showing all TodoList
   useEffect(()=> {
     fetch("/lists").then((r) => {
@@ -49,15 +48,27 @@ function App() {
     history.push("/");
     }
 
-
   function handleDeleteProfile(e) {
     fetch(`/activities/${e.target.value}`, {
       method: "DELETE",
       })
+      .then(() => fetchUser())
     }
 
+    function fetchUser(){
+      fetch("/activities").then((response) => {
+        if (response.ok) {
+          response.json().then((data) => setActivity(data));
+        }
+      });
+    }
 
-    const currentUser = (user ? `Hi ${user.name} !`: `Welcome! New Member ? => "Signup" : Login Please`)
+    const currentUser = (user ? `Hi ${user.name} !`: 
+    <div> 
+      <span>Welcome!!</span> <br/>
+      <span>New Member ? "Signup" : "Login Please"</span>
+    </div>
+   )
 
   return (
     <div >

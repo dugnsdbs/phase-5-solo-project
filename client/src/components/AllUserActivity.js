@@ -13,14 +13,6 @@ function AllUserActivity({user, activity,handleDeleteProfile}) {
   const currentUsername = user? user.username: null
   const userActivities = activity.filter((a)=> a.user.username === currentUsername && a.date > today)
 
-
-
-
-  
-
-
-
-
   const allUserActivities = userActivities.map((a) => {
     return (
       <div key={a.id}>
@@ -32,7 +24,11 @@ function AllUserActivity({user, activity,handleDeleteProfile}) {
       <span>TIME: {a.time}</span>
       <br/>
       <span>MEMO: {a.memo}</span>
-      <button value={a.id} onClick={handleDeleteProfile}>Delete</button>
+      <br/>
+      <div>
+        <button value={a.id} onClick={handleDeleteProfile}>Delete</button>
+      </div>
+      
   </div>
     )
   })

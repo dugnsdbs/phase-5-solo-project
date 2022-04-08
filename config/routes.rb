@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post "/createList", to: "lists#create"
   delete "/deleteActivity", to: "activities#destroy"
 
+  get "/weather", to: "weathers#get_weather"
+
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
