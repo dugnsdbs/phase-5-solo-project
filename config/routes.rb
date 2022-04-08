@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post "/createActivity", to: "activities#create"
 
   post "/createList", to: "lists#create"
+  delete "/deleteActivity", to: "activities#destroy"
 
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

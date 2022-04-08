@@ -5,7 +5,6 @@ import LogOut from "./components/LogOut";
 import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
 import SignUp from "./components/SignUp";
-// import Activity from "./components/Activity";
 import ToDoList from "./components/ToDoList"
 import TodayUserActivity from "./components/TodayUserActivity";
 import AllUserActivity from "./components/AllUserActivity"
@@ -16,7 +15,6 @@ function App() {
   const [activity, setActivity] = useState([])
   const [list, setList] = useState([])
 
-  
 // showing current user
   useEffect(()=>{
     fetch("/me").then((r) => {
@@ -33,8 +31,9 @@ function App() {
         r.json().then((activities)=> setActivity(activities));
       }
     });
-  },[])
+  },[], activity)
 
+  
   // showing all TodoList
   useEffect(()=> {
     fetch("/lists").then((r) => {
@@ -51,22 +50,14 @@ function App() {
     }
 
 
+  function handleDeleteProfile(e) {
+    fetch(`/activities/${e.target.value}`, {
+      method: "DELETE",
+      })
+    }
+
+
     const currentUser = (user ? `Hi ${user.name} !`: `Welcome! New Member ? => "Signup" : Login Please`)
-
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-    var yyyy = today.getFullYear();
-    today = `${mm}-${dd}-${yyyy}`;
-
-
-    const todayDateDisplay = (
-      user?
-      <div>
-        <p>Today: {today}</p>
-      </div>
-      :null
-    )
 
   return (
     <div >
@@ -77,10 +68,10 @@ function App() {
           <Switch> 
           <Route exact path = "/" >
               <h1>{currentUser}</h1>
-              {todayDateDisplay}
               {user? <ToDoList user={user} list={list} setList={setList} setActivity={setActivity}  handleReroute={handleReroute} activity={activity}/> :null }
-              {user? <TodayUserActivity user={user} activity={activity}/> :null }
-              {user?  <AllUserActivity user={user} activity={activity}/> :null}
+              {user? <TodayUserActivity user={user} activity={activity} handleDeleteProfile={handleDeleteProfile} /> :null }
+              <br/>
+              {user? <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile}/> :null }
             </Route>
             <Route exact path = "/signup" >
               <SignUp setUser={setUser} handleReroute={handleReroute}/> 

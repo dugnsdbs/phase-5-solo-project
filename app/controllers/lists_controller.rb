@@ -1,5 +1,7 @@
 class ListsController < ApplicationController
 
+  skip_before_action :authorized_user, only: [:destroy]
+
   def index 
     lists = List.all
     render json: lists, status: :ok

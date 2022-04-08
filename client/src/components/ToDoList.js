@@ -6,7 +6,7 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
 
   //** Calendar List section **
 
-  const [title, setTitle] = useState([])
+  const [title, setTitle] = useState("")
   const [showActivity, setShowActivity] = useState(false)
 
   function handleTitle(e){
@@ -26,11 +26,9 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
         }
         else{
           setList(title)
-          // setTitle('')
-          // handleReroute()
+     
         }
       })
-      // .then(()=>handleReroute())
     }
   
 
@@ -49,10 +47,10 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
 
   // ** activity section **
 
-  const [memo, setMemo] = useState([])
-  const [location, setLocation] = useState([])
-  const [time, setTime] = useState([])
-  const [date, setDate] = useState([])
+  const [memo, setMemo] = useState("")
+  const [location, setLocation] = useState("")
+  const [time, setTime] = useState("")
+  const [date, setDate] = useState("")
 
 
   function handleActivitiy(e){
@@ -79,16 +77,17 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
         data.errors.forEach(e => alert(e))
       }
       else{
-        setActivity([...activity,data])
+        setActivity([data,...activity])
         setMemo('')
         setLocation("")
         setDate("")
         setTime("")
+        setTitle("")
         alert("To do List has been created!!!")
-        // handleReroute()
+        handleReroute()
       }
     })
-    .then(()=>handleReroute())
+
   }
 
   const toDoItem = (

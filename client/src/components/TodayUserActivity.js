@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TodayUserActivity({user, activity}) {
+function TodayUserActivity({user, activity, handleDeleteProfile}) {
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -14,26 +14,32 @@ function TodayUserActivity({user, activity}) {
   const TodayActivity = userTodayActivity.map((a) => {
     return (
       <div key={a.id}>
-          <p>TITLE: {a.list.title}</p>
+          <p>Date: {a.date}</p>
           <span>Username: {a.user.username}</span>
           <br/>
-          <span>Date: {a.date}</span>
+          <span>TITLE: {a.list.title}</span>
           <br/>
           <span>LOCATION: {a.location}</span>
           <br/>
           <span>TIME: {a.time}</span>
           <br/>
           <span>MEMO: {a.memo}</span>
+          <button value={a.id} onClick={handleDeleteProfile}>Delete</button>
       </div>
     )
   })
+
 
   const displayTodayActivity = (
     TodayActivity.length > 0 ? TodayActivity : "No Appointment Today !!!"
   )
   return (
     <div>
-      {displayTodayActivity}
+  
+      <div>
+        {displayTodayActivity}
+      </div>
+
     </div>
   )
 }
