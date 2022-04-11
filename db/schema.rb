@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2022_04_07_182225) do
     t.string "username"
     t.string "password_digest"
     t.string "name"
+    t.string "city"
     t.string "email"
     t.string "photo"
     t.datetime "created_at", precision: 6, null: false
@@ -46,13 +47,13 @@ ActiveRecord::Schema.define(version: 2022_04_07_182225) do
   end
 
   create_table "weathers", force: :cascade do |t|
-    t.bigint "activity_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["activity_id"], name: "index_weathers_on_activity_id"
+    t.index ["user_id"], name: "index_weathers_on_user_id"
   end
 
   add_foreign_key "activities", "lists"
   add_foreign_key "activities", "users"
-  add_foreign_key "weathers", "activities"
+  add_foreign_key "weathers", "users"
 end

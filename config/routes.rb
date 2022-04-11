@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get "/weather", to: "weathers#get_weather"
 
+  get "/currentLocations", to: "users#current_location"
+
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end

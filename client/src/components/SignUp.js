@@ -7,6 +7,7 @@ function SignUp({ setUser, handleReroute }) {
   const [password, setPassword] = useState("")
   const [passwordConfirmantion, setPasswordConfirmation] = useState("")
   const [name, setName] = useState("")
+  const [city, setCity] = useState("")
   const [email, setEmail] = useState("")
   const [photo, setPhoto] = useState("")
 
@@ -22,6 +23,7 @@ function SignUp({ setUser, handleReroute }) {
         password,
         passwordConfirmantion,
         name,
+        city,
         email,
         photo
       }),
@@ -38,6 +40,7 @@ function SignUp({ setUser, handleReroute }) {
         setPassword("")
         setPasswordConfirmation("")
         setName("")
+        setCity("")
         setEmail("")
         setPhoto("")
         alert("Profile Successfully Created! Please Log In.")
@@ -62,6 +65,9 @@ function SignUp({ setUser, handleReroute }) {
         </div>
         <div class="mb-3">
           <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
+        </div>
+        <div class="mb-3">
+          <input type="text" placeholder="City" value={city} onChange={(e) => setCity(e.target.value)}/>
         </div>
         <div class="mb-3">
           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>

@@ -7,6 +7,7 @@ function Profile({user, setUser}) {
   const [edit, setEdit] = useState(false)
   const [username, setusername] = useState("")
   const [name, setName] = useState("")
+  const [city, setCity] = useState("")
   const [email, setEmail] = useState("")
   const [photo, setPhoto] = useState("")
 
@@ -19,6 +20,7 @@ function Profile({user, setUser}) {
           if (user){
           setusername(user.username)
           setName(user.name)
+          setCity(user.city)
           setEmail(user.email)
           setPhoto(user.photo)
           }
@@ -43,6 +45,7 @@ function Profile({user, setUser}) {
       body: JSON.stringify({
         photo,
         username,
+        city,
         name,
         email,
       }),
@@ -79,6 +82,7 @@ function Profile({user, setUser}) {
         <input type="text" value={photo} onChange={(e) => setPhoto(e.target.value)}/> 
         <input type="text" value={username} onChange={(e) => setusername(e.target.value)}/> 
         <input type="text" value={name} onChange={(e) => setName(e.target.value)}/> 
+        <input type="text" value={city} onChange={(e) => setCity(e.target.value)}/> 
         <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/> 
         <input type="submit"/> 
         <button onClick={refreshFetch}>Cancel</button>

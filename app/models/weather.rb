@@ -1,3 +1,5 @@
 class Weather < ApplicationRecord
-  belongs_to :activity
+  belongs_to :user
+
+
 end

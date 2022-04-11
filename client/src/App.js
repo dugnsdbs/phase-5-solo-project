@@ -29,6 +29,7 @@ function App() {
   },[])
 
 
+
   // const url ="https://www.metaweather.com/api/location/search/?query=london"
   
   // useEffect(()=>{
@@ -90,6 +91,7 @@ function App() {
     </div>
    )
 
+
   return (
     <div className="app">
       <div>
@@ -102,7 +104,7 @@ function App() {
              <br/>
               <h1>{currentUser}</h1>
               <div>
-                 {user? <Weather/> : null}
+                 {user? <Weather /> : null}
               </div> 
               <div>
                  {user? <TodayUserActivity user={user} activity={activity} handleDeleteProfile={handleDeleteProfile} /> :null }
