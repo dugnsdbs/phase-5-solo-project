@@ -51,13 +51,25 @@ function SignUp({ setUser, handleReroute }) {
   const signupBox = (
     <div>
       <form onSubmit={handleSignUp}>
+      <div class="mb-3">
         <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+        </div>
+        <div class="mb-3">
         <input type="text" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        <input type="text" placeholder="Password-Confirmation" value={passwordConfirmantion} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
-        <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <input type="text" placeholder="Photo" value={photo} onChange={(e) => setPhoto(e.target.value)}/>
-        <input type="submit"/>
+        </div>
+        <div class="mb-3">
+          <input type="text" placeholder="Password-Confirmation" value={passwordConfirmantion} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
+        </div>
+        <div class="mb-3">
+          <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
+        </div>
+        <div class="mb-3">
+          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        </div>
+        <div class="mb-3">
+          <input type="text" placeholder="Photo" value={photo} onChange={(e) => setPhoto(e.target.value)}/>
+        </div>
+        <button  className="btn btn-outline-dark" type="submit">Submit</button>
       </form>
     </div>
   )

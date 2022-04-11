@@ -17,16 +17,21 @@ function Login({handleReroute, setUser}){
     .then((r) => r.json())
     .then((user) => (user.username ? setUser(user) : alert(user.error)))
     .then(()=>handleReroute())
-    // setUsername("")
-    // setPassword("")
+    setUsername("")
+    setPassword("")
   }
 
   const loginBox = (
     <div>
+      <br/>
       <form onSubmit={handleLogin}>
-        <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
-        <input type="text"  placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        <input type="submit"/>
+        <div class="mb-3">
+          <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+        </div>
+        <div class="mb-3"> 
+          <input type="text"  placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        </div>
+        <button  className="btn btn-outline-dark" type="submit">Sign Up</button>
       </form>
     </div>
   )

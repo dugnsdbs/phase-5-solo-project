@@ -1,4 +1,5 @@
 import { Route, Switch, useHistory } from "react-router-dom";
+import { CssBaseline, Grid} from '@material-ui/core'
 import { useState , useEffect } from 'react'
 import Login from "./components/Login";
 import LogOut from "./components/LogOut";
@@ -8,12 +9,15 @@ import SignUp from "./components/SignUp";
 import ToDoList from "./components/ToDoList"
 import TodayUserActivity from "./components/TodayUserActivity";
 import AllUserActivity from "./components/AllUserActivity"
+import Weather from "./components/Weather";
+
 
 function App() {
 
   const [user, setUser] = useState(null)
   const [activity, setActivity] = useState([])
   const [list, setList] = useState([])
+  const [weather, setWeather] = useState([])
   
 // showing current user
   useEffect(()=>{
@@ -23,6 +27,19 @@ function App() {
       }
     });
   },[])
+
+
+  // const url ="https://www.metaweather.com/api/location/search/?query=london"
+  
+  // useEffect(()=>{
+  //   fetch("/weather")
+  //   .then((r) => r.json())
+  //   .then((r)=> setWeather(r));
+  //     },[])
+
+
+  // console.log(weather)
+
 
   // showing current activity
   useEffect(()=> {
@@ -64,48 +81,6 @@ function App() {
       });
     }
 
-    // const [editTitle, setEditTitle] = useState("")
-    // const [editDate, setEditDate] = useState("")
-    // const [editMemo, setEditMemo] = useState("")
-    // const [editLocation, setEditLocation] = useState("")
-    // const [editTime, setEditTime] = useState("")
-  
-
-    // function handleEditActivity(e){
-    //   e.preventDefault()
-    //   fetch(`/activities/${e.target.value}`, {
-    //     method:"PATCH",
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //       "title":editTitle,
-    //       "date":editDate,
-    //       "memo":editMemo,
-    //       "location":editLocation,
-    //       "time":editTime
-    //     })
-    //   })
-    //   .then((r) => r.json())
-    //   .then((data) => setActivity([...activity,data]))
-    //   .then(() => fetchActivities())
-    //       // alert("To do List updated!!")
-    //       // handleReroute()
-    //   }
-
-    //   const listEdit =(
-    //     <div>
-    //       <form onSubmit={handleEditActivity}>
-    //         <input type="text" value={editTitle} onChange={(e) => setEditTitle(e.target.value)} placeholder="title"/>
-    //         <input type="text" value={editLocation} onChange={(e) => setEditLocation(e.target.value)} placeholder="location"/>
-    //         <input type="date" value={editDate} onChange={(e) => setEditDate(e.target.value)}/>
-    //         <input type="time" value={editTime} onChange={(e) => setEditTime(e.target.value)}/>
-    //         <input type="text" value={editMemo} onChange={(e) => setEditMemo(e.target.value)} placeholder="memo"/>
-    //         <input type="submit"/> 
-    //       </form>
-    //     </div>
-    //   )
- 
 
     // main diplay greeting
     const currentUser = (user ? `Hi ${user.name} !`: 
@@ -116,22 +91,33 @@ function App() {
    )
 
   return (
-    <div >
-   
+    <div className="app">
       <div>
       <br/>
         <Navbar user={user}/> 
+          
           <Switch> 
           <Route exact path = "/" >
+            <div>
+             <br/>
               <h1>{currentUser}</h1>
-              {user? <ToDoList user={user} list={list} setList={setList} setActivity={setActivity}  handleReroute={handleReroute} activity={activity}/> :null }
+              <div>
+                 {user? <Weather/> : null}
+              </div> 
+              <div>
+                 {user? <TodayUserActivity user={user} activity={activity} handleDeleteProfile={handleDeleteProfile} /> :null }
+              </div>
               <br/>
-              {user? <TodayUserActivity user={user} activity={activity} handleDeleteProfile={handleDeleteProfile} /> :null }
-              <br/>
-              {user? <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile} /> :null }
+              <div>
+                 {user? <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile} /> :null }
+              </div>
+            </div>
             </Route>
             <Route exact path = "/signup" >
               <SignUp setUser={setUser} handleReroute={handleReroute}/> 
+            </Route>
+            <Route exact path = "/createList" >
+               <ToDoList user={user} list={list} setList={setList} setActivity={setActivity}  handleReroute={handleReroute} activity={activity} />
             </Route>
             <Route exact path = "/login">
               <Login setUser={setUser} handleReroute={handleReroute}/>
@@ -143,6 +129,7 @@ function App() {
               <Profile user={user} handleReroute={handleReroute} setUser={setUser}/>
             </Route>
           </Switch>
+          
       </div>
    
        

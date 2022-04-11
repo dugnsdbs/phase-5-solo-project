@@ -1,17 +1,18 @@
 import { NavLink } from "react-router-dom";
 
 
+
 function Navbar({user}){
 
   const NavUser = (
-    user ?
+    user ? 
       <div>
           <NavLink exact to ="/">
             <button >Home</button>
           </NavLink>
-          {/* <NavLink exact to ="/createList">
+          <NavLink exact to ="/createList">
             <button >ToDoList Create</button>
-          </NavLink> */}
+          </NavLink>
           <NavLink to ="/me">
             <button >Profile</button>
           </NavLink>  
@@ -34,8 +35,11 @@ function Navbar({user}){
   )
   return (
     <div>
-      {NavUser}
+      <div>
+        {NavUser}
+      </div>
     </div>
+
   )
 }
 

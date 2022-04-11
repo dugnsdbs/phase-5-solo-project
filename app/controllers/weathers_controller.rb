@@ -4,7 +4,7 @@ class WeathersController < ApplicationController
 
   def get_weather
 
-    url ="https://www.metaweather.com/api/location/44418"
+    url ="https://www.metaweather.com/api/location/search/?query=new york"
     response = RestClient.get(url)
     render json: response
   end
