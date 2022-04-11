@@ -96,13 +96,14 @@ function App() {
     <div className="app">
       <div>
       <br/>
-        <Navbar user={user}/> 
-          
+      <div className="NavBar">
+          <h1>{currentUser}</h1>
+         <Navbar user={user}/> 
+      </div>
           <Switch> 
           <Route exact path = "/" >
             <div>
              <br/>
-              <h1>{currentUser}</h1>
               <div>
                  {user? <Weather /> : null}
               </div> 
@@ -131,7 +132,6 @@ function App() {
               <Profile user={user} handleReroute={handleReroute} setUser={setUser}/>
             </Route>
           </Switch>
-          
       </div>
    
        

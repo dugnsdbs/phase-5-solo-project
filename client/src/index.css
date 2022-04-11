@@ -32,7 +32,10 @@ code {
   z-index: -1;
 }
 
-.app.search{
+.app .search{
+  display: flex;
+  justify-content: right;
+  position: relative;
   text-align: center;
   padding: 1rem;
 }

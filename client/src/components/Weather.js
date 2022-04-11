@@ -6,47 +6,29 @@ function Weather({currentUserWeather}) {
 
   const [data, setData] = useState({})
   const [location, setLocation] = useState("")
-  const [weatherUser, setWeatherUser] = useState("")
-  const [cityName, setCityName] = useState("")
-  
+  const [userCityWeather, setUserCityWeather] = useState("")
 
   useEffect(()=>{
     axios.get("/me").then((response) => {
-      setWeatherUser(response.data)
-      console.log(response.data) 
+      setUserCityWeather(response.data)
      })
   },[])
   useEffect(()=>{
     fetchWeather()
-  },[weatherUser]
+  },[userCityWeather]
   )
 
   function fetchWeather(location=null){
-    const currentUserCity = (weatherUser.city)
-    console.log(currentUserCity)
-    
+
+    const currentUserCity = (userCityWeather.city)
     const url =`https://api.openweathermap.org/data/2.5/weather?q=${location || currentUserCity}&units=imperial&appid=d553b36b1c3d05de17dbe044421f5ec3`
 
     axios.get(url).then((response) => {
       setData(response.data)
-      console.log(response.data)
      })
   }
 
-
-
-// useEffect(()=>{
-// axios.get(url).then((response) => {
-//   setData(response.data)
-//   console.log(response.data)
-//  })
-// },[])
-
-
-  // `https://api.openweathermap.org/data/2.5/weather?q=newyork&appid=d553b36b1c3d05de17dbe044421f5ec3`
-
   const searchLocation =(e) => {
-   
     if (e.key === "Enter"){
       fetchWeather(location)
        setLocation('')
@@ -62,6 +44,7 @@ function Weather({currentUserWeather}) {
           placeholder="Enter Location"
           onKeyPress={searchLocation}
         type="text"/>
+        <input type="submit"/>
       </div>
      <div className="container">
        <div className="bottom">
@@ -81,7 +64,7 @@ function Weather({currentUserWeather}) {
        <div className="bottom"> 
           <div className="feels">
             <p>Feels Like</p>
-            { data.main ? <p className="bolds">{ data.main.feels_like} øF</p> : null }
+            { data.main ? <p className="bolds">{ data.main.feels_like.toFixed()} øF</p> : null }
           </div>
           <div className="humidity">
             <p>Humidity</p>
