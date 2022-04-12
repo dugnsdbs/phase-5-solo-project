@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState , useEffect } from 'react'
-import AllUserActivity from './AllUserActivity'
 import DatePicker from "react-datepicker"
 
 function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
@@ -37,7 +36,7 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
     setShowActivity(!showActivity)
   }
  
-  const dateBox = (
+  const titleBox = (
     <div>
       <form onSubmit={handleTitle}>
         <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
@@ -96,12 +95,6 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
     <div>
       <form onSubmit={handleActivitiy}>
         <input type="text" placeholder ="Location" value={location} onChange={(e) =>setLocation(e.target.value)}/>
-        {/* <DatePicker  placeholder ="Date"
-         value={date} 
-         onChange={(e) =>setDate(e.target.value)}/>
-        <DatePicker  placeholder ="Date" 
-        value={date} 
-        onChange={(e) =>setDate(e.target.value)}/> */}
         <input type ="date" placeholder ="Date" value={date} onChange={(e) =>setDate(e.target.value)}/>
         <input type ="time" placeholder ="Time" value={time} onChange={(e) =>setTime(e.target.value)}/>
         <input type="text" placeholder ="Memo" value={memo} onChange={(e) =>setMemo(e.target.value)}/>
@@ -116,8 +109,8 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
 
   return (
     <div>
-      <div>  
-         {dateBox}
+      <div >  
+         {titleBox}
       </div>
       <br/>
       <div>   
