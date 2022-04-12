@@ -111,9 +111,9 @@ function App() {
                  {user? <TodayUserActivity user={user} activity={activity} handleDeleteProfile={handleDeleteProfile} /> :null }
               </div>
               <br/>
-              <div>
+              {/* <div>
                  {user? <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile} /> :null }
-              </div>
+              </div> */}
             </div>
             </Route>
             <Route exact path = "/signup" >
@@ -121,6 +121,9 @@ function App() {
             </Route>
             <Route exact path = "/createList" >
                <ToDoList user={user} list={list} setList={setList} setActivity={setActivity}  handleReroute={handleReroute} activity={activity} />
+               <div>
+                 {user? <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile} /> :null }
+              </div>
             </Route>
             <Route exact path = "/login">
               <Login setUser={setUser} handleReroute={handleReroute}/>

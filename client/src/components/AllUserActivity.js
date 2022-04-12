@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState , useEffect } from 'react'
+import Calendars from './Calendars';
+
 
 function AllUserActivity({user, activity,handleDeleteProfile, listEdit}) {
 
@@ -43,6 +45,10 @@ function AllUserActivity({user, activity,handleDeleteProfile, listEdit}) {
       <div>
         {diplayUpcomingActivity}
       </div>
+      <div>
+        <Calendars activity={activity} user={user}/>
+      </div>
+     
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState , useEffect } from 'react'
 import AllUserActivity from './AllUserActivity'
+import DatePicker from "react-datepicker"
 
 function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
 
@@ -51,6 +52,7 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
   const [location, setLocation] = useState("")
   const [time, setTime] = useState("")
   const [date, setDate] = useState("")
+  
 
 
   function handleActivitiy(e){
@@ -84,7 +86,7 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
         setTime("")
         setTitle("")
         alert("To do List has been created!!!")
-        handleReroute()
+        // handleReroute()
       }
     })
 
@@ -94,7 +96,13 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
     <div>
       <form onSubmit={handleActivitiy}>
         <input type="text" placeholder ="Location" value={location} onChange={(e) =>setLocation(e.target.value)}/>
-        <input type ="date" placeholder ="Title" value={date} onChange={(e) =>setDate(e.target.value)}/>
+        {/* <DatePicker  placeholder ="Date"
+         value={date} 
+         onChange={(e) =>setDate(e.target.value)}/>
+        <DatePicker  placeholder ="Date" 
+        value={date} 
+        onChange={(e) =>setDate(e.target.value)}/> */}
+        <input type ="date" placeholder ="Date" value={date} onChange={(e) =>setDate(e.target.value)}/>
         <input type ="time" placeholder ="Time" value={time} onChange={(e) =>setTime(e.target.value)}/>
         <input type="text" placeholder ="Memo" value={memo} onChange={(e) =>setMemo(e.target.value)}/>
         <input type="submit"/>
