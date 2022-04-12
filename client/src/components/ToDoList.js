@@ -5,7 +5,6 @@ import DatePicker from "react-datepicker"
 function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
 
   //** Calendar List section **
-
   const [title, setTitle] = useState("")
   const [showActivity, setShowActivity] = useState(false)
 
@@ -46,14 +45,11 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
   )
 
   // ** activity section **
-
   const [memo, setMemo] = useState("")
   const [location, setLocation] = useState("")
   const [time, setTime] = useState("")
   const [date, setDate] = useState("")
   
-
-
   function handleActivitiy(e){
     e.preventDefault()
     fetch("/createActivity", {
@@ -103,9 +99,9 @@ function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
     </div>
   )
 
- const activities = (
-  showActivity ? toDoItem : null
-)
+  const activities = (
+    showActivity ? toDoItem : null
+  )
 
   return (
     <div>

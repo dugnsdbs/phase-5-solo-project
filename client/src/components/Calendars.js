@@ -38,10 +38,10 @@ function Calendars({activity, user}) {
   // sending User Activity into Calendar
   const userActiviyCalendar = userActivities.map((a) => {
 
-    //add 24 hours to get right date (before display the date before after this display right date)
+    //add 1 more day to get right date (before display the date before after this display right date)
     let startDate = new Date(a.date)
-    startDate.setHours( startDate.getHours() + 24 )
-
+    startDate.setDate( startDate.getDate() + 1 )
+    console.log(startDate)
     return(
       {
         title: `${a.list.title}`,
