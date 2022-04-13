@@ -97,12 +97,18 @@ code {
 
 .upcoming{
   display: flex;
-  justify-content: space-evenly;
-  margin: 0px 5px 100px 5px;
+  /* justify-content: space-evenly; */
+  padding: 0 0 100px 0;
 }
 
 .upcomingEach{
   border: thick double #32a1ce;
   padding: 10px;
   margin: 0px 5px 50px 5px;
+}
+
+.editAct{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 0 100px 0;
 }

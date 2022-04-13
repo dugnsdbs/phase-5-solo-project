@@ -1,8 +1,15 @@
 import React , {useState, useEffect} from 'react'
 
-function TodayUserActivity({user, activity, handleDeleteProfile}) {
+function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
 
-  const [todayActivity, setTodayActivity] = useState([])
+  const [memo, setMemo] = useState("")
+  const [location, setLocation] = useState("")
+  const [time, setTime] = useState("")
+  const [date, setDate] = useState("")
+
+  const [actId, setActId] = useState(null)
+  const [toggle, setToggle] = useState(false)
+
 
   // get todays day
   var today = new Date();
@@ -21,20 +28,28 @@ function TodayUserActivity({user, activity, handleDeleteProfile}) {
   }
   )
 
+  function idAndToggle (id){
+    setActId(id)
+    setToggle(!toggle)
+  }
+
   const todayActivities = userTodayActivity.map((todayActivity) => 
-    <tr>
-    {todayActivity.date? <th scope="row">{todayActivity.date}</th> :null}
-     {todayActivity.list? <td>{todayActivity.list.title}</td> :null}
-     {todayActivity ? <td>{todayActivity.location}</td> :null}
-     {todayActivity ? <td>{todayActivity.time}</td>:null}
-     {todayActivity ? <td>{todayActivity.memo}</td>:null}
-     {todayActivity ? <td><button value={todayActivity.id} onClick={handleDeleteProfile}>Delete</button></td> :null}
+    <tr key={todayActivity.id}>
+      <th scope="row">{todayActivity.date}</th>
+        <td>{todayActivity.list.title}</td>
+        <td>{todayActivity.location}</td>
+        <td>{todayActivity.time}</td>
+        <td>{todayActivity.memo}</td>
+        <td>
+          <button value={todayActivity.id} onClick={handleDeleteProfile}>Delete</button>
+          <button onClick={()=> idAndToggle(todayActivity.id)}>Edit</button>
+        </td>
     </tr>
   )
 
 
  const table = (
- <div >
+ <div className="upcoming">
     <table className="table" id = "tableLetter">
       <thead>
         <tr>
@@ -56,10 +71,47 @@ function TodayUserActivity({user, activity, handleDeleteProfile}) {
   const displayTodayActivity = (
     userTodayActivity.length > 0 ? table : <p className="appointment">"No Appointment Today !!!"</p>
   )
+
+  function fetchActivity(){
+    fetch("/activities")
+    .then((r)=> r.json())
+    .then((r)=> setActivity(r))
+  }
+
+  function handleEditActivity(e){
+    e.preventDefault()
+    fetch(`/activities/${actId}`,{
+      method: "PATCH",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify({memo, location, time, date}),
+    })
+    .then((r)=>r.json())
+    .then((data)=>  {
+      fetchActivity()
+      setToggle(false)
+    })
+  }
+  
+  const editAct = (
+    <div className="editAct">
+      <form onSubmit={handleEditActivity}>
+        <input type="text" value={location} onChange={(e)=> setLocation(e.target.value)} placeholder="New location"/>
+        <input type="date" value={date} onChange={(e)=> setDate(e.target.value)}/>
+        <input type="time" value={time} onChange={(e)=> setTime(e.target.value)}/>
+        <input type="text" value={memo} onChange={(e)=> setMemo(e.target.value)} placeholder="New memo"/>
+        <input type="submit"/>
+        <button onClick={idAndToggle}>Cancel</button>
+      </form>
+    </div>
+  )
+
+
   return (
     <div>
       <div >
-            {displayTodayActivity}
+         {toggle ? editAct : displayTodayActivity}
       </div> 
     </div>
   )

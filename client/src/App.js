@@ -92,7 +92,7 @@ function App() {
                  {user? <Weather /> : null}
               </div> 
               <div>
-                 {user? <TodayUserActivity user={user} activity={activity} handleDeleteProfile={handleDeleteProfile} /> :null }
+                 {user? <TodayUserActivity user={user} activity={activity} handleDeleteProfile={handleDeleteProfile} handleReroute={handleReroute} setActivity={setActivity}/> :null }
               </div>
             <br/>
           </Route>
