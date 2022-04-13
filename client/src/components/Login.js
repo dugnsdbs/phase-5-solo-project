@@ -39,7 +39,7 @@ function Login({handleReroute, setUser}){
   )
   return(
     <div>
-       <div className="top">      
+       <div className="signupName">      
         <h1>Login</h1>
       </div>
       {loginBox}

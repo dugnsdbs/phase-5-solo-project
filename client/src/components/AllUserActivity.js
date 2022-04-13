@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Calendars from './Calendars';
 
 function AllUserActivity({user, activity,handleDeleteProfile, setActivity}) {
@@ -115,8 +115,7 @@ const editAct = (
       {/* <div className="upcoming"> */}
         {toggle ? editAct:diplayUpcomingActivity}
       {/* </div> */}
-       
-    
+      
     </div>
   )
 }

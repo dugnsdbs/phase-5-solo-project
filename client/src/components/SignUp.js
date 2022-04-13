@@ -78,7 +78,7 @@ function SignUp({ handleReroute }) {
 
   return (
     <div>
-      <div className="top">      
+      <div className="signupName">      
         <h1>SIGN UP</h1>
       </div>
       {signupBox}

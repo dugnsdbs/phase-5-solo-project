@@ -35,7 +35,7 @@ function ToDoList({user, setList, list, setActivity, activity}) {
   }
  
   const titleBox = (
-    <div>
+    <div >
       <form onSubmit={handleTitle}>
         <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
         <input  onClick={handleShowActivity} type="submit"/>
@@ -105,10 +105,7 @@ function ToDoList({user, setList, list, setActivity, activity}) {
   return (
     <div>
       <div >  
-         {titleBox}
-      </div>
-      <br/>
-      <div>   
+         {titleBox} 
         {activities}
       </div>
     </div>

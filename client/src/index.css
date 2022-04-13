@@ -23,7 +23,7 @@ code {
 
 .app:before{
   content:'';
-  background: url('./assets/cloud.jpg') no-repeat center center/cover;
+  /* background: url('./assets/cloud.jpg') no-repeat center center/cover; */
   position: absolute;
   width:100%;
   height: 100%;
@@ -37,7 +37,9 @@ code {
   justify-content: right;
   position: relative;
   text-align: center;
-  padding: 1rem;
+  padding: 10px 50px 10px 0; 
+  margin: 0 0 20px 0;
+  border: solid;
 }
 
 .app input{
@@ -70,8 +72,22 @@ code {
 
 .top{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding:20px 0 20px 0;
+  border: solid
+}
+
+.signupTop{
+  display: flex;
+  justify-content: center;
   padding:50px 0 0 0;
+  border: solid;
+  margin: 10px 0 0 0;
+}
+
+.signupName{
+  display: flex;
+  justify-content: center;
 }
 
 .loginButton{
@@ -84,31 +100,51 @@ code {
   display: flex;
   justify-content: space-evenly;
   font-size: 50px;
+  padding: 0 0 100px 0;
 }
 
 .container{
   font-size: 30px;
-  color: black
+  color: black;
+  padding: 0 0 0 0;
+  border: solid;
+  /* margin: 5px 0 0 0; */
 }
 
 .greeting{
-  color: black
+  color: black;
+  padding: 0 0 0 50px;
 }
 
 .upcoming{
   display: flex;
-  /* justify-content: space-evenly; */
+  justify-content: space-evenly;
   padding: 0 0 100px 0;
 }
 
 .upcomingEach{
   border: thick double #32a1ce;
-  padding: 10px;
-  margin: 0px 5px 50px 5px;
+  padding: 0px 5px 100px 5px;
 }
 
 .editAct{
   display: flex;
   justify-content: space-evenly;
   padding: 0 0 100px 0;
+  margin: 50px 0 100px 0;
+}
+
+.rightNavbar{
+  padding: 10px 50px 0 0 
+}
+
+.leftNavbar{
+  padding: 0 0 0 100px;
+  color: black
+}
+
+.todo{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 50px 0 0 0;
 }

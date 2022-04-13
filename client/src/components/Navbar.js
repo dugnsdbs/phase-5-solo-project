@@ -14,7 +14,7 @@ function Navbar({user, setUser,handleReroute}){
 
   const NavUser = (
     user ? 
-      <div>
+      <div className="rightNavbar">
           <NavLink exact to ="/">
             <button >Home</button>
           </NavLink>
@@ -24,16 +24,10 @@ function Navbar({user, setUser,handleReroute}){
           <NavLink to ="/me">
             <button >Profile</button>
           </NavLink>  
-          {/* <NavLink  to ="/logout">
-            <button >Logout</button>
-          </NavLink> */}
-              <button onClick={handleLogout}>LogOut</button>
+            <button onClick={handleLogout}>LogOut</button>
         </div>
         :
-        <div>
-          {/* <NavLink exact to ="/">
-            <button >Home</button>
-          </NavLink> */}
+        <div className="rightNavbar">
           <NavLink  to ="/signup">
             <button >Signup</button>
           </NavLink>

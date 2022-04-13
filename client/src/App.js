@@ -1,5 +1,4 @@
 import { Route, Switch, useHistory } from "react-router-dom";
-import { CssBaseline, Grid} from '@material-ui/core'
 import { useState , useEffect } from 'react'
 import Login from "./components/Login";
 import LogOut from "./components/LogOut";
@@ -68,14 +67,12 @@ function App() {
     }
 
     // main diplay greeting
-    const currentUser = (user ? <div className="greeting">Hi {user.name} !</div>: 
+    const currentUser = (user ? <div className="leftNavbar">Hi {user.name} !</div>: 
     <div className="greeting"> 
       <span>Welcome!!</span> <br/>
       <span>New Member ? "Signup" : "Login Please"</span>
     </div>
    )
-
-
 
   return (
     <div className="app">
@@ -97,7 +94,7 @@ function App() {
             <br/>
           </Route>
           <Route exact path = "/signup" >
-            <div className="top">
+            <div className="signupTop">
               <SignUp setUser={setUser} handleReroute={handleReroute}/> 
             </div>
           </Route>
@@ -106,11 +103,13 @@ function App() {
               <ToDoList user={user} list={list} setList={setList} setActivity={setActivity}  handleReroute={handleReroute} activity={activity} />
             </div>
             <div>
-              {user? <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile} /> :null }
+              {user? 
+                <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile} />
+              :null }
             </div>
           </Route>
           <Route exact path = "/login">
-            <div className="top">
+            <div className="signupTop">
               <Login setUser={setUser} handleReroute={handleReroute}/>
             </div>
           </Route>

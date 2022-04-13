@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
 
-function Weather({currentUserWeather}) {
+function Weather() {
 
   const [data, setData] = useState({})
   const [location, setLocation] = useState("")
@@ -79,7 +79,5 @@ function Weather({currentUserWeather}) {
     </div>
   )
 }
-
-// d553b36b1c3d05de17dbe044421f5ec3
 
 export default Weather
