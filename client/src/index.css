@@ -23,7 +23,7 @@ code {
 
 .app:before{
   content:'';
-  /* background: url('./assets/cloud.jpg') no-repeat center center/cover; */
+  background: url('./assets/cloud.jpg') no-repeat center center/cover;
   position: absolute;
   width:100%;
   height: 100%;
@@ -71,6 +71,7 @@ code {
 .top{
   display: flex;
   justify-content: space-evenly;
+  padding:50px 0 0 0;
 }
 
 .loginButton{
@@ -91,12 +92,13 @@ code {
 }
 
 .greeting{
-  color: white
+  color: black
 }
 
 .upcoming{
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
+  margin: 0px 5px 100px 5px;
 }
 
 .upcomingEach{
