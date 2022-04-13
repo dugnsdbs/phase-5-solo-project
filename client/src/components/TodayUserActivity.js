@@ -14,12 +14,12 @@ function TodayUserActivity({user, activity, handleDeleteProfile}) {
   const currentUsername = user? user.username: null
   // filtering user name and today date 
   const userTodayActivity = activity.filter((a)=> a.user.username === currentUsername&& a.date === today) 
-  // .sort((a,b) => {
-  //   return(
-  //     new Date(b.time) - new Date(a.time)
-  //   )
-  // }
-  // )
+  .sort((a,b) => {
+    return(
+       parseInt(a.time) - parseInt(b.time) 
+    )
+  }
+  )
 
   const todayActivities = userTodayActivity.map((todayActivity) => 
     <tr>
