@@ -1,7 +1,8 @@
-import React from 'react'
-import {useState} from 'react'
+import React , {useState, useEffect} from 'react'
 
-function TodayUserActivity({user, activity, handleDeleteProfile, listEdit, setActivity}) {
+function TodayUserActivity({user, activity, handleDeleteProfile}) {
+
+  const [todayActivity, setTodayActivity] = useState([])
 
   // get todays day
   var today = new Date();
@@ -12,109 +13,54 @@ function TodayUserActivity({user, activity, handleDeleteProfile, listEdit, setAc
   
   const currentUsername = user? user.username: null
   // filtering user name and today date 
-  const userTodayActivity = activity.filter((a)=> a.user.username === currentUsername&& a.date === today)
+  const userTodayActivity = activity.filter((a)=> a.user.username === currentUsername&& a.date === today) 
+  // .sort((a,b) => {
+  //   return(
+  //     new Date(b.time) - new Date(a.time)
+  //   )
+  // }
+  // )
 
-
-
-
-  const TodayActivity = userTodayActivity.map((a) => {
-    return (
-      <div key={a.id} >
-      <table className="table" id = "tableLetter">
-  <thead>
+  const todayActivities = userTodayActivity.map((todayActivity) => 
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">LOCATION</th>
-      <th scope="col">TIME</th>
-      <th scope="col">MEMO</th>
-      <th scope="col">Done?</th>
+    {todayActivity.date? <th scope="row">{todayActivity.date}</th> :null}
+     {todayActivity.list? <td>{todayActivity.list.title}</td> :null}
+     {todayActivity ? <td>{todayActivity.location}</td> :null}
+     {todayActivity ? <td>{todayActivity.time}</td>:null}
+     {todayActivity ? <td>{todayActivity.memo}</td>:null}
+     {todayActivity ? <td><button value={todayActivity.id} onClick={handleDeleteProfile}>Delete</button></td> :null}
     </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">{a.date}</th>
-      <td>{a.list.title}</td>
-      <td>{a.location}</td>
-      <td>{a.time}</td>
-      <td>{a.memo}</td>
-      <td><button value={a.id} onClick={handleDeleteProfile}>Delete</button></td>
-    </tr>
-  
-  </tbody>
-</table>
-    </div>
-      // <div key={a.id} >
-      //   <br/>
-      //     <p>Date: {a.date}</p>
-      //       <span>TITLE: {a.list.title}</span>
-      //     <br/>
-      //       <span>LOCATION: {a.location}</span>
-      //     <br/>
-      //       <span>TIME: {a.time}</span>
-      //     <br/>
-      //      <span>MEMO: {a.memo}</span>
-      //     <div>   
-      //       <button value={a.id} onClick={handleDeleteProfile}>Delete</button>
-      //     </div>
-      // </div>
-    )
-  })
-
-  const table = (
-    <div>
-    <table className="table" id = "tableLetter">
-    <thead>
-    <tr>
-      <th scope="col">DATE</th>
-      <th scope="col">Title</th>
-      <th scope="col">LOCATION</th>
-      <th scope="col">TIME</th>
-      <th scope="col">MEMO</th>
-      <th scope="col">Done?</th>
-    </tr>
-  </thead>
-  </table>
-  </div>
   )
 
-//     <div key={a.id} >
-//       <table className="table">
-//   <thead>
-//     <tr>
-//       <th scope="col">#</th>
-//       <th scope="col">Title</th>
-//       <th scope="col">LOCATION</th>
-//       <th scope="col">TIME</th>
-//       <th scope="col">MEMO</th>
-//       <th scope="col">Done?</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <tr>
-//       <th scope="row">1</th>
-//       <td>{a.list.title}</td>
-//       <td>{a.location}</td>
-//       <td>{a.time}</td>
-//       <td>{a.memo}</td>
-//       <td><button value={a.id} onClick={handleDeleteProfile}>Delete</button></td>
-//     </tr>
-  
-//   </tbody>
-// </table>
-//     </div>
-//   )
 
+ const table = (
+ <div >
+    <table className="table" id = "tableLetter">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">LOCATION</th>
+          <th scope="col">TIME</th>
+          <th scope="col">MEMO</th>
+          <th scope="col">Done?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {todayActivities}
+      </tbody>
+    </table>
+    </div>
+ )
+ 
   const displayTodayActivity = (
-    TodayActivity.length > 0 ? TodayActivity : "No Appointment Today !!!"
+    userTodayActivity.length > 0 ? table : <p className="appointment">"No Appointment Today !!!"</p>
   )
   return (
     <div>
       <div >
-            {table}
             {displayTodayActivity}
       </div> 
-      {/* {table} */}
     </div>
   )
 }

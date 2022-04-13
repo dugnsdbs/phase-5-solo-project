@@ -1,7 +1,5 @@
 import React from 'react'
 
-
-
 function LogOut({ setUser, handleReroute}) {
 
   function handleLogout(){
@@ -14,12 +12,9 @@ function LogOut({ setUser, handleReroute}) {
     .then(() => handleReroute())
   }
 
-
   return (
     <div> 
       <button onClick={handleLogout}>LogOut</button>
-
-    
     </div>
   )
 }

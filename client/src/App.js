@@ -17,7 +17,6 @@ function App() {
   const [user, setUser] = useState(null)
   const [activity, setActivity] = useState([])
   const [list, setList] = useState([])
-  const [weather, setWeather] = useState([])
   
 // showing current user
   useEffect(()=>{
@@ -27,20 +26,6 @@ function App() {
       }
     });
   },[])
-
-
-
-  // const url ="https://www.metaweather.com/api/location/search/?query=london"
-  
-  // useEffect(()=>{
-  //   fetch("/weather")
-  //   .then((r) => r.json())
-  //   .then((r)=> setWeather(r));
-  //     },[])
-
-
-  // console.log(weather)
-
 
   // showing current activity
   useEffect(()=> {
@@ -82,27 +67,26 @@ function App() {
       });
     }
 
-
     // main diplay greeting
-    const currentUser = (user ? `Hi ${user.name} !`: 
-    <div> 
+    const currentUser = (user ? <div className="greeting">Hi {user.name} !</div>: 
+    <div className="greeting"> 
       <span>Welcome!!</span> <br/>
       <span>New Member ? "Signup" : "Login Please"</span>
     </div>
    )
 
 
+
   return (
     <div className="app">
       <div>
       <br/>
-      <div className="NavBar">
-          <h1>{currentUser}</h1>
-         <Navbar user={user}/> 
-      </div>
-          <Switch> 
+        <div className="top">
+            <h1>{currentUser}</h1>
+          <Navbar user={user} setUser={setUser} handleReroute={handleReroute}/> 
+        </div>
+        <Switch> 
           <Route exact path = "/" >
-            <div>
              <br/>
               <div>
                  {user? <Weather /> : null}
@@ -110,34 +94,38 @@ function App() {
               <div>
                  {user? <TodayUserActivity user={user} activity={activity} handleDeleteProfile={handleDeleteProfile} /> :null }
               </div>
-              <br/>
-              {/* <div>
-                 {user? <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile} /> :null }
-              </div> */}
-            </div>
-            </Route>
-            <Route exact path = "/signup" >
+            <br/>
+          </Route>
+          <Route exact path = "/signup" >
+            <div className="top">
               <SignUp setUser={setUser} handleReroute={handleReroute}/> 
-            </Route>
-            <Route exact path = "/createList" >
-               <ToDoList user={user} list={list} setList={setList} setActivity={setActivity}  handleReroute={handleReroute} activity={activity} />
-               <div>
-                 {user? <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile} /> :null }
-              </div>
-            </Route>
-            <Route exact path = "/login">
+            </div>
+          </Route>
+          <Route exact path = "/createList" >
+            <div>
+              <ToDoList user={user} list={list} setList={setList} setActivity={setActivity}  handleReroute={handleReroute} activity={activity} />
+            </div>
+            <div>
+              {user? <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile} /> :null }
+            </div>
+          </Route>
+          <Route exact path = "/login">
+            <div className="top">
               <Login setUser={setUser} handleReroute={handleReroute}/>
-            </Route>
-            <Route exact path = "/logout">
+            </div>
+          </Route>
+          <Route exact path = "/logout">
+            <div>
               <LogOut setUser={setUser} handleReroute={handleReroute}/>
-            </Route>
-            <Route exact path = "/me">
+            </div>
+          </Route>
+          <Route exact path = "/me">
+            <div>
               <Profile user={user} handleReroute={handleReroute} setUser={setUser}/>
-            </Route>
-          </Switch>
+            </div>
+          </Route>
+        </Switch>
       </div>
-   
-       
     </div>
   );
 }

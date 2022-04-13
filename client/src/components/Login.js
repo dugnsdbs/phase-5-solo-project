@@ -25,18 +25,23 @@ function Login({handleReroute, setUser}){
     <div>
       <br/>
       <form onSubmit={handleLogin}>
-        <div className="mb-3">
+        <div >
           <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
         </div>
-        <div className="mb-3"> 
+        <div > 
           <input type="text"  placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
-        <button  className="btn btn-outline-dark" type="submit">Sign Up</button>
+        <div className="loginButton">
+          <button  className="btn btn-outline-dark" type="submit">Sign Up</button>
+        </div>
       </form>
     </div>
   )
   return(
     <div>
+       <div className="top">      
+        <h1>Login</h1>
+      </div>
       {loginBox}
     </div>
   )

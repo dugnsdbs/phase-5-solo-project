@@ -31,10 +31,6 @@ function Profile({user, setUser}) {
     setEdit(!edit)
   }
 
-  // useEffect(() => {
-  //   fetchUser()
-  // },[]);
-
   function handleEditProfile(e){
     e.preventDefault()
     fetch(`/users/${user.id}`, {

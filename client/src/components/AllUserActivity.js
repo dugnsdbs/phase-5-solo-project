@@ -1,9 +1,7 @@
 import React from 'react'
 import Calendars from './Calendars';
 
-
-function AllUserActivity({user, activity,handleDeleteProfile, listEdit}) {
-
+function AllUserActivity({user, activity,handleDeleteProfile}) {
 
     // get todays day
   var today = new Date();
@@ -15,10 +13,16 @@ function AllUserActivity({user, activity,handleDeleteProfile, listEdit}) {
   const currentUsername = user? user.username: null
   // filtering user name  and date greater than today
   const userActivities = activity.filter((a)=> a.user.username === currentUsername && a.date > today)
-
+  .sort((a,b) => {
+    return(
+      new Date(a.date) - new Date(b.date)
+    )
+  }
+  )
+  
   const allUserActivities = userActivities.map((a) => {
     return (
-      <div key={a.id}>
+      <div key={a.id}  className="upcomingEach">
         <p>Date: {a.date}</p>
           <span>TITLE: {a.list.title}</span>
         <br/>
@@ -42,12 +46,11 @@ function AllUserActivity({user, activity,handleDeleteProfile, listEdit}) {
   return (
     <div>
       <div>
-        {diplayUpcomingActivity}
-      </div>
-      <div>
         <Calendars activity={activity} user={user}/>
       </div>
-     
+      <div className="upcoming">
+        {diplayUpcomingActivity}
+      </div>
     </div>
   )
 }

@@ -1,8 +1,16 @@
 import { NavLink } from "react-router-dom";
 
+function Navbar({user, setUser,handleReroute}){
 
-
-function Navbar({user}){
+  function handleLogout(){
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => {
+    setUser()
+    alert("Good bye!! See you Later!!")
+    })
+    .then(() => handleReroute())
+  }
 
   const NavUser = (
     user ? 
@@ -16,15 +24,16 @@ function Navbar({user}){
           <NavLink to ="/me">
             <button >Profile</button>
           </NavLink>  
-          <NavLink  to ="/logout">
+          {/* <NavLink  to ="/logout">
             <button >Logout</button>
-          </NavLink>
+          </NavLink> */}
+              <button onClick={handleLogout}>LogOut</button>
         </div>
         :
         <div>
-          <NavLink exact to ="/">
+          {/* <NavLink exact to ="/">
             <button >Home</button>
-          </NavLink>
+          </NavLink> */}
           <NavLink  to ="/signup">
             <button >Signup</button>
           </NavLink>

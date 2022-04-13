@@ -43,14 +43,14 @@ code {
 .app input{
   padding: .7rem 1,5rem;
   font-size: 1.2rem;
-  border-radius: 25px;
+  /* border-radius: 25px; */
   border: 1px sold rgba(255,255,255,0.8);
   background: rgba(255,255,255,0.1);
   text-align: center;
 }
 
 ::placeholder{
-  color: #f8f8f8;
+  color: black
 }
 
 .app .bottom {
@@ -66,4 +66,41 @@ code {
 
 .bolds{
   font-weight: 700;
+}
+
+.top{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.loginButton{
+  padding:10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.appointment{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 50px;
+}
+
+.container{
+  font-size: 30px;
+  color: black
+}
+
+.greeting{
+  color: white
+}
+
+.upcoming{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.upcomingEach{
+  border: thick double #32a1ce;
+  padding: 10px;
+  margin: 0px 5px 50px 5px;
 }

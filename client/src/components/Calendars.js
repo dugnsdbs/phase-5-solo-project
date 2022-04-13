@@ -7,7 +7,6 @@ import getDay from 'date-fns/getDay'
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-datepicker/dist/react-datepicker.css"
 
-
 const locales = {
   "en-US": require("date-fns/locale/en-US")
 }
@@ -37,19 +36,18 @@ function Calendars({activity, user}) {
   
   // sending User Activity into Calendar
   const userActiviyCalendar = userActivities.map((a) => {
-
     //add 1 more day to get right date (before display the date before after this display right date)
     let startDate = new Date(a.date)
     startDate.setDate( startDate.getDate() + 1 )
-    console.log(startDate)
+    
     return(
       {
         title: `${a.list.title}`,
         start: startDate,
         end: startDate
       }
-  )
-})
+    )
+  })
 
   return (
     <div>

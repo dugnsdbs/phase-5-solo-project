@@ -1,8 +1,7 @@
 import React from 'react'
-import { useState , useEffect } from 'react'
-import DatePicker from "react-datepicker"
+import { useState } from 'react'
 
-function ToDoList({user, setList, list, setActivity, activity,handleReroute}) {
+function ToDoList({user, setList, list, setActivity, activity}) {
 
   //** Calendar List section **
   const [title, setTitle] = useState("")
