@@ -5,7 +5,6 @@ function SignUp({ handleReroute }) {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [passwordConfirmantion, setPasswordConfirmation] = useState("")
   const [name, setName] = useState("")
   const [city, setCity] = useState("")
   const [email, setEmail] = useState("")
@@ -21,7 +20,6 @@ function SignUp({ handleReroute }) {
       body: JSON.stringify({
         username, 
         password,
-        passwordConfirmantion,
         name,
         city,
         email,
@@ -37,7 +35,6 @@ function SignUp({ handleReroute }) {
       else{
         setUsername('')
         setPassword("")
-        setPasswordConfirmation("")
         setName("")
         setCity("")
         setEmail("")
@@ -58,9 +55,6 @@ function SignUp({ handleReroute }) {
         </div>
         <div >
         <input type="text" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        </div>
-        <div >
-          <input type="text" placeholder="Password-Confirmation" value={passwordConfirmantion} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
         </div>
         <div >
           <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
