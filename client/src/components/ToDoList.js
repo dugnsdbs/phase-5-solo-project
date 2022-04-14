@@ -35,14 +35,14 @@ function ToDoList({user, setList, list, setActivity, activity}) {
   }
  
   const titleBox = (
-    <div >
-      <form onSubmit={handleTitle}>
-        <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
-        <input  onClick={handleShowActivity} type="submit"/>
+    <div  id="creatActivity">
+      <form onSubmit={handleTitle}>     
+       <label className="todoLabel"> Title  </label>
+        <input type="text"  value={title} onChange={(e) => setTitle(e.target.value)}/>
+        <input  id="rightNavButton" className="btn btn-outline-info" onClick={handleShowActivity} type="submit"/>
       </form>
     </div>
   )
-
   // ** activity section **
   const [memo, setMemo] = useState("")
   const [location, setLocation] = useState("")
@@ -90,14 +90,19 @@ function ToDoList({user, setList, list, setActivity, activity}) {
   }
 
   const toDoItem = (
-    <div>
+    <div id="creatActivity">
       <form onSubmit={handleActivitiy}>
-        <input type="text" placeholder ="Location" value={location} onChange={(e) =>setLocation(e.target.value)}/>
-        <input type ="date" placeholder ="Date" value={date} onChange={(e) =>setDate(e.target.value)}/>
-        <input type ="date" placeholder ="endDate" value={endDate} onChange={(e) =>setEndDate(e.target.value)}/>
-        <input type ="time" placeholder ="Time" value={time} onChange={(e) =>setTime(e.target.value)}/>
-        <input type="text" placeholder ="Memo" value={memo} onChange={(e) =>setMemo(e.target.value)}/>
-        <input type="submit"/>
+        <label className="todoLabel"> location </label>
+           <input  type="text" value={location} onChange={(e) =>setLocation(e.target.value)}/>
+        <label className="todoLabel"> Start </label>
+           <input type ="date"  value={date} onChange={(e) =>setDate(e.target.value)}/>
+        <label className="todoLabel"> End  </label>
+           <input  type ="date"  value={endDate} onChange={(e) =>setEndDate(e.target.value)}/>
+        <label className="todoLabel"> Time  </label>
+            <input  type ="time"  value={time} onChange={(e) =>setTime(e.target.value)}/>
+        <label className="todoLabel"> Memo   </label>
+             <input  type="text"value={memo} onChange={(e) =>setMemo(e.target.value)}/>
+            <input type="submit" id="rightNavButton" className="btn btn-outline-info"/>
       </form>
     </div>
   )
@@ -108,7 +113,7 @@ function ToDoList({user, setList, list, setActivity, activity}) {
 
   return (
     <div>
-      <div >  
+      <div>  
          {titleBox} 
         {activities}
       </div>

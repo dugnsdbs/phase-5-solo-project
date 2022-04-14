@@ -11,6 +11,7 @@ function AllUserActivity({user, activity,handleDeleteProfile, setActivity}) {
 
   const [actId, setActId] = useState(null)
   const [toggle, setToggle] = useState(false)
+  const [complete, setComplete] = useState(false)
 
     // get todays day
   var today = new Date();
@@ -21,7 +22,7 @@ function AllUserActivity({user, activity,handleDeleteProfile, setActivity}) {
 
   const currentUsername = user? user.username: null
   // filtering user name  and date greater than today
-  const userActivities = activity.filter((a)=> a.user.username === currentUsername && a.date > today)
+  const userActivities = activity.filter((a)=> a.user.username === currentUsername && a.date >= today)
   .sort((a,b) => {
     return(
       new Date(a.date) - new Date(b.date)
@@ -31,6 +32,11 @@ function AllUserActivity({user, activity,handleDeleteProfile, setActivity}) {
   function idAndToggle (id){
     setActId(id)
     setToggle(!toggle)
+  }
+
+  function activityComplete(id){
+    setActId(id)
+    setComplete(!complete)
   }
 
   const allUserActivities = userActivities.map((a) => {
@@ -43,9 +49,16 @@ function AllUserActivity({user, activity,handleDeleteProfile, setActivity}) {
           <td>{a.time}</td>
           <td>{a.memo}</td>
           <td>
+             <form onSubmit={handleEditCompelte}>
+                <button value={complete} onClick={()=> activityComplete(a.id)} onChange={(e)=> setComplete(e.target.value)}>{a.complete ? "complete": "not yet"}</button>
+              </form>
+          </td>
+          <td>
+            <button onClick={()=> idAndToggle(a.id)}>Edit</button>
+          </td>
+          <td>
             <button value={a.id} onClick={handleDeleteProfile}>Delete</button>
-           <button onClick={()=> idAndToggle(a.id)}>Edit</button>
-         </td>
+          </td> 
       </tr>
     )
   })
@@ -62,6 +75,8 @@ function AllUserActivity({user, activity,handleDeleteProfile, setActivity}) {
              <th scope="col">TIME</th>
              <th scope="col">MEMO</th>
              <th scope="col">Done?</th>
+             <th scope="col">Change?</th>
+             <th scope="col">Delete?</th>
            </tr>
          </thead>
          <tbody>
@@ -81,21 +96,37 @@ function AllUserActivity({user, activity,handleDeleteProfile, setActivity}) {
     .then((r)=> setActivity(r))
   }
 
-function handleEditActivity(e){
-  e.preventDefault()
-  fetch(`/activities/${actId}`,{
-    method: "PATCH",
-    headers:{
-      "Content-Type": "application/json"
-    },
-    body:JSON.stringify({memo, location, time, date, endDate}),
-  })
-  .then((r)=>r.json())
-  .then((data)=> {
-    fetchActivity()
-    setToggle(false)
-   })
-  }
+  function handleEditCompelte(e){
+    e.preventDefault()
+    fetch(`/activities/${actId}`,{
+      method: "PATCH",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify({complete}),
+    })
+    .then((r)=>r.json())
+    .then((data)=> {
+      fetchActivity()
+      console.log(data)
+     })
+    }
+
+  function handleEditActivity(e){
+    e.preventDefault()
+    fetch(`/activities/${actId}`,{
+      method: "PATCH",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify({memo, location, time, date, endDate}),
+    })
+    .then((r)=>r.json())
+    .then((data)=> {
+      fetchActivity()
+      setToggle(false)
+    })
+   }
 
 const editAct = (
   <div className="editAct">
@@ -111,15 +142,15 @@ const editAct = (
   </div>
 )
 
+
   return (
     <div>
-      <div>
+      <div className="calendar">
         <Calendars activity={activity} user={user}/>
       </div>
-      {/* <div className="upcoming"> */}
+      <div>   
         {toggle ? editAct:diplayUpcomingActivity}
-      {/* </div> */}
-      
+      </div>
     </div>
   )
 }

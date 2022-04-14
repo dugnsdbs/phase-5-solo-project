@@ -38,13 +38,13 @@ function Weather() {
   return (
     <div >
       <div className="search">
-        <input 
+        <input  
           value={location}
           onChange={e => setLocation(e.target.value)}
           placeholder="Enter Location"
           onKeyPress={searchLocation}
-        type="text"/>
-        <input type="submit"/>
+        type="text" />
+        <input type="submit" className="btn btn-outline-info" id="rightNavButton" />
       </div>
      <div className="container">
        <div className="bottom">
@@ -54,7 +54,7 @@ function Weather() {
           </div>
           <div className="temp">
             <p>Current Temp</p>
-            { data.main ? <h1>{data.main.temp.toFixed()} øF</h1> : null }
+            { data.main ? <h1>{data.main.temp.toFixed()} °F</h1> : null }
           </div> 
           <div className="description">
             <p>Description</p>
@@ -64,7 +64,7 @@ function Weather() {
        <div className="bottom"> 
           <div className="feels">
             <p>Feels Like</p>
-            { data.main ? <p className="bolds">{ data.main.feels_like.toFixed()} øF</p> : null }
+            { data.main ? <p className="bolds">{ data.main.feels_like.toFixed()} °F</p> : null }
           </div>
           <div className="humidity">
             <p>Humidity</p>
@@ -72,7 +72,7 @@ function Weather() {
           </div>
           <div className="wind">
             <p>Wind Speed</p>
-           {data.wind ? <p className="bolds"> {data.wind.speed} MPH</p> : null}
+           {data.wind ? <p className="bolds"> {data.wind.speed.toFixed()} MPH</p> : null}
           </div>
        </div>
      </div>

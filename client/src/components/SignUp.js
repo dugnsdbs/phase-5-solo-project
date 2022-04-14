@@ -51,22 +51,22 @@ function SignUp({ handleReroute }) {
     <div>
       <form onSubmit={handleSignUp}>
       <div >
-        <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+        <input className="btn btn-outline-light" type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
         </div>
         <div >
-        <input type="text" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <input className="btn btn-outline-light" type="text" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
         <div >
-          <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
+          <input className="btn btn-outline-light" type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
         </div>
         <div >
-          <input type="text" placeholder="City" value={city} onChange={(e) => setCity(e.target.value)}/>
+          <input className="btn btn-outline-light" type="text" placeholder="City" value={city} onChange={(e) => setCity(e.target.value)}/>
         </div>
         <div >
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input className="btn btn-outline-light" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
         </div>
         <div >
-          <input type="text" placeholder="Photo" value={photo} onChange={(e) => setPhoto(e.target.value)}/>
+          <input className="btn btn-outline-light" type="text" placeholder="Photo" value={photo} onChange={(e) => setPhoto(e.target.value)}/>
         </div>
         <div className="loginButton">
           <button  className="btn btn-outline-dark" type="submit">Submit</button>

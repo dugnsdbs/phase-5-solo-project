@@ -67,8 +67,14 @@ function App() {
     }
 
     // main diplay greeting
-    const currentUser = (user ? <div className="leftNavbar">Hi {user.name} !</div>: 
+    const currentUser = (user ? 
+    <div className="leftNavbar">
+      <h1>Remember ?</h1>
+      <p>Hi {user.name} !</p>
+    </div>
+    : 
     <div className="greeting"> 
+      <h1>Remember ?</h1>
       <span>Welcome!!</span> <br/>
       <span>New Member ? "Signup" : "Login Please"</span>
     </div>
@@ -76,7 +82,6 @@ function App() {
 
   return (
     <div className="app">
-      <div>
       <br/>
         <div className="top">
             <h1>{currentUser}</h1>
@@ -99,10 +104,8 @@ function App() {
             </div>
           </Route>
           <Route exact path = "/createList" >
-            <div>
+            <div >
               <ToDoList user={user} list={list} setList={setList} setActivity={setActivity}  handleReroute={handleReroute} activity={activity} />
-            </div>
-            <div>
               {user? 
                 <AllUserActivity user={user} activity={activity} setList={setList} list={list} setActivity={setActivity} handleDeleteProfile={handleDeleteProfile} />
               :null }
@@ -124,7 +127,6 @@ function App() {
             </div>
           </Route>
         </Switch>
-      </div>
     </div>
   );
 }

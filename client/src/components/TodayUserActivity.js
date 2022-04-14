@@ -10,6 +10,7 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
 
   const [actId, setActId] = useState(null)
   const [toggle, setToggle] = useState(false)
+  const [complete, setComplete] = useState(false)
 
 
   // get todays day
@@ -34,6 +35,11 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
     setToggle(!toggle)
   }
 
+  function activityComplete(id){
+    setActId(id)
+    setComplete(!complete)
+  }
+
   const todayActivities = userTodayActivity.map((todayActivity) => 
     <tr key={todayActivity.id}>
       <th scope="row">{todayActivity.date}</th>
@@ -43,8 +49,15 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
         <td>{todayActivity.time}</td>
         <td>{todayActivity.memo}</td>
         <td>
-          <button value={todayActivity.id} onClick={handleDeleteProfile}>Delete</button>
+        <form onSubmit={handleEditCompelte}>
+                <button value={complete} onClick={()=> activityComplete(todayActivity.id)} onChange={(e)=> setComplete(e.target.value)}>{todayActivity.complete ? "complete": "not yet"}</button>
+              </form>
+        </td>
+        <td>
           <button onClick={()=> idAndToggle(todayActivity.id)}>Edit</button>
+        </td>
+        <td>
+          <button value={todayActivity.id} onClick={handleDeleteProfile}>Delete</button>
         </td>
     </tr>
   )
@@ -62,6 +75,9 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
           <th scope="col">TIME</th>
           <th scope="col">MEMO</th>
           <th scope="col">Done?</th>
+          <th scope="col">Done?</th>
+          <th scope="col">Change?</th>
+          <th scope="col">Delete?</th>
         </tr>
       </thead>
       <tbody>
@@ -80,6 +96,21 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
     .then((r)=> r.json())
     .then((r)=> setActivity(r))
   }
+
+  function handleEditCompelte(e){
+    e.preventDefault()
+    fetch(`/activities/${actId}`,{
+      method: "PATCH",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify({complete}),
+    })
+    .then((r)=>r.json())
+    .then((data)=> {
+      fetchActivity()
+     })
+    }
 
   function handleEditActivity(e){
     e.preventDefault()

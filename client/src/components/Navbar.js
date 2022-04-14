@@ -15,24 +15,34 @@ function Navbar({user, setUser,handleReroute}){
   const NavUser = (
     user ? 
       <div className="rightNavbar">
+        <ul className="nav nav-tabs">
+          <li className="nav-item">
           <NavLink exact to ="/">
-            <button >Home</button>
-          </NavLink>
+              <button id="rightNavButton" className="btn btn-outline-primary">Home</button>
+            </NavLink>
+          </li>
+          <li className="nav-item">
           <NavLink exact to ="/createList">
-            <button >ToDoList Create</button>
-          </NavLink>
+              <button id="rightNavButton" className="btn btn-outline-success">ToDoList Create</button>
+            </NavLink>
+          </li>
+          <li className="nav-item">
           <NavLink to ="/me">
-            <button >Profile</button>
-          </NavLink>  
-            <button onClick={handleLogout}>LogOut</button>
-        </div>
+              <button id="rightNavButton"  className="btn btn-outline-warning" >Profile</button>
+            </NavLink>  
+          </li>
+          <li className="nav-item">
+              <button className="btn btn-outline-danger" id="rightNavButton" onClick={handleLogout}>LogOut</button>
+          </li>
+        </ul>
+      </div>
         :
         <div className="rightNavbar">
-          <NavLink  to ="/signup">
-            <button >Signup</button>
+           <NavLink  to ="/signup">
+             <button className="btn btn-outline-success" >Signup</button>
           </NavLink>
           <NavLink  to ="/login">
-            <button >Login</button>
+            <button className="btn btn-outline-dark">Login</button>
           </NavLink>
         </div>
   )

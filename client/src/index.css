@@ -23,13 +23,14 @@ code {
 
 .app:before{
   content:'';
-  /* background: url('./assets/cloud.jpg') no-repeat center center/cover; */
+  background: url('./assets/cloudFinal.jpg') no-repeat center center/cover;
   position: absolute;
   width:100%;
-  height: 100%;
+  height: 150%;
   top: 0;
   left: 0;
   z-index: -1;
+  /* background: rgb(247, 245, 164); */
 }
 
 .app .search{
@@ -37,15 +38,16 @@ code {
   justify-content: right;
   position: relative;
   text-align: center;
-  padding: 10px 50px 10px 0; 
+  padding: 10px 100px 10px 0; 
   margin: 0 0 20px 0;
-  border: solid;
+  font-weight: bold;
+  /* border: solid; */
 }
 
 .app input{
   padding: .7rem 1,5rem;
   font-size: 1.2rem;
-  /* border-radius: 25px; */
+  border-radius: 10px;
   border: 1px sold rgba(255,255,255,0.8);
   background: rgba(255,255,255,0.1);
   text-align: center;
@@ -74,14 +76,14 @@ code {
   display: flex;
   justify-content: space-between;
   padding:20px 0 20px 0;
-  border: solid
+  /* border: solid */
 }
 
 .signupTop{
   display: flex;
   justify-content: center;
   padding:50px 0 0 0;
-  border: solid;
+  /* border: solid; */
   margin: 10px 0 0 0;
 }
 
@@ -105,14 +107,14 @@ code {
 
 .container{
   font-size: 30px;
-  color: black;
+  color: rgb(105, 102, 102);
   padding: 0 0 0 0;
-  border: solid;
+  /* border: solid; */
   /* margin: 5px 0 0 0; */
 }
 
 .greeting{
-  color: black;
+  color: rgb(255, 255, 255);
   padding: 0 0 0 50px;
 }
 
@@ -120,11 +122,13 @@ code {
   display: flex;
   justify-content: space-evenly;
   padding: 0 0 100px 0;
+  
 }
 
 .upcomingEach{
   border: thick double #32a1ce;
   padding: 0px 5px 100px 5px;
+  margin: 20px 0 0 0;
 }
 
 .editAct{
@@ -135,16 +139,35 @@ code {
 }
 
 .rightNavbar{
-  padding: 10px 50px 0 0 
+  padding: 10px 100px 0 0 ;
+  display: flex;
+  justify-content: space-evenly;
+}
+#rightNavButton{
+  margin: 5px;
 }
 
 .leftNavbar{
   padding: 0 0 0 100px;
-  color: black
+  font-size: 50px;
+  color: white
 }
 
 .todo{
   display: flex;
   justify-content: space-evenly;
   padding: 50px 0 0 0;
+}
+
+
+#creatActivity{
+  display: flex;
+  justify-content:center;
+  margin: 10px 10px 10px 20px;
+  /* margin: 0 49% 0 0; */
+  /* padding: 0 0 0 100px; */
+}
+
+.todoLabel{
+  margin: 5px
 }
