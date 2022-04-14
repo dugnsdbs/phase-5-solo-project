@@ -31,7 +31,7 @@ function Calendars({activity, user}) {
   //CurrentUser
   const currentUsername = user? user.username: null
   //show only User Activity date
-  const userActivities = activity.filter((a)=> a.user.username === currentUsername && a.date >= today)
+  const userActivities = activity.filter((a)=> a.user.username === currentUsername && a.date >= today )
 
   
   // sending User Activity into Calendar
@@ -39,12 +39,15 @@ function Calendars({activity, user}) {
     //add 1 more day to get right date (before display the date before after this display right date)
     let startDate = new Date(a.date)
     startDate.setDate( startDate.getDate() + 1 )
+
+    let endDate = new Date(a.endDate)
+    endDate.setDate( endDate.getDate()+1 )
     
     return(
       {
         title: `${a.list.title}`,
         start: startDate,
-        end: startDate
+        end: endDate
       }
     )
   })

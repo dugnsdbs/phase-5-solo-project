@@ -48,6 +48,7 @@ function ToDoList({user, setList, list, setActivity, activity}) {
   const [location, setLocation] = useState("")
   const [time, setTime] = useState("")
   const [date, setDate] = useState("")
+  const [endDate, setEndDate] = useState("")
   
   function handleActivitiy(e){
     e.preventDefault()
@@ -60,6 +61,7 @@ function ToDoList({user, setList, list, setActivity, activity}) {
         "user_id": user.id,
         "list_id": list.id,
         "date":date, 
+        "endDate": endDate,
         "memo":memo, 
         "location":location,
         "time":time
@@ -77,6 +79,7 @@ function ToDoList({user, setList, list, setActivity, activity}) {
         setMemo('')
         setLocation("")
         setDate("")
+        setEndDate("")
         setTime("")
         setTitle("")
         alert("To do List has been created!!!")
@@ -91,6 +94,7 @@ function ToDoList({user, setList, list, setActivity, activity}) {
       <form onSubmit={handleActivitiy}>
         <input type="text" placeholder ="Location" value={location} onChange={(e) =>setLocation(e.target.value)}/>
         <input type ="date" placeholder ="Date" value={date} onChange={(e) =>setDate(e.target.value)}/>
+        <input type ="date" placeholder ="endDate" value={endDate} onChange={(e) =>setEndDate(e.target.value)}/>
         <input type ="time" placeholder ="Time" value={time} onChange={(e) =>setTime(e.target.value)}/>
         <input type="text" placeholder ="Memo" value={memo} onChange={(e) =>setMemo(e.target.value)}/>
         <input type="submit"/>

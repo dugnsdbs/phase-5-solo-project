@@ -3,6 +3,7 @@ class CreateActivities < ActiveRecord::Migration[6.1]
     create_table :activities do |t|
       t.string :location
       t.string :date
+      t.string :endDate
       t.string :time
       t.string :memo
       t.boolean :complete, default: false

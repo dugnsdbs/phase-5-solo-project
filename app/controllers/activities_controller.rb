@@ -40,7 +40,7 @@ class ActivitiesController < ApplicationController
 private 
 
   def activity_params
-    params.permit(:user_id, :list_id, :location, :date, :time, :memo, :complete)
+    params.permit(:user_id, :list_id, :location, :date, :endDate,:time, :memo, :complete)
   end
 
 end

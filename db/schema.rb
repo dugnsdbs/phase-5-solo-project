@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2022_04_07_182225) do
   create_table "activities", force: :cascade do |t|
     t.string "location"
     t.string "date"
+    t.string "endDate"
     t.string "time"
     t.string "memo"
     t.boolean "complete", default: false

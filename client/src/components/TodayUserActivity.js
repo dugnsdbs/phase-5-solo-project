@@ -6,6 +6,7 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
   const [location, setLocation] = useState("")
   const [time, setTime] = useState("")
   const [date, setDate] = useState("")
+  const [endDate, setEndDate] = useState("")
 
   const [actId, setActId] = useState(null)
   const [toggle, setToggle] = useState(false)
@@ -36,6 +37,7 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
   const todayActivities = userTodayActivity.map((todayActivity) => 
     <tr key={todayActivity.id}>
       <th scope="row">{todayActivity.date}</th>
+        <td>{todayActivity.endDate}</td>
         <td>{todayActivity.list.title}</td>
         <td>{todayActivity.location}</td>
         <td>{todayActivity.time}</td>
@@ -53,7 +55,8 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
     <table className="table" id = "tableLetter">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
           <th scope="col">Title</th>
           <th scope="col">LOCATION</th>
           <th scope="col">TIME</th>
@@ -85,7 +88,7 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
       headers:{
         "Content-Type": "application/json"
       },
-      body:JSON.stringify({memo, location, time, date}),
+      body:JSON.stringify({memo, location, time, date, endDate}),
     })
     .then((r)=>r.json())
     .then((data)=>  {
@@ -99,6 +102,7 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
       <form onSubmit={handleEditActivity}>
         <input type="text" value={location} onChange={(e)=> setLocation(e.target.value)} placeholder="New location"/>
         <input type="date" value={date} onChange={(e)=> setDate(e.target.value)}/>
+        <input type="date" value={endDate} onChange={(e)=> setEndDate(e.target.value)}/>
         <input type="time" value={time} onChange={(e)=> setTime(e.target.value)}/>
         <input type="text" value={memo} onChange={(e)=> setMemo(e.target.value)} placeholder="New memo"/>
         <input type="submit"/>
