@@ -65,8 +65,9 @@ function Profile({user, setUser}) {
     <div>
       <img width="100px" src={user.photo} alt=""/>
       <p>Username: {user.username}</p>
-      <p>Name: {user.name}</p>
+      <p>Name: {user.name.toUpperCase()}</p>
       <p>Email: {user.email}</p>
+      <p>From: {user.city.toUpperCase()}</p>
       <button onClick={refreshFetch}>Edit</button>
     </div>
     :null

@@ -50,18 +50,19 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
         <td>{todayActivity.memo}</td>
         <td>
         <form onSubmit={handleEditCompelte}>
-                <button value={complete} onClick={()=> activityComplete(todayActivity.id)} onChange={(e)=> setComplete(e.target.value)}>{todayActivity.complete ? "complete": "not yet"}</button>
-              </form>
+           <button className="btn btn-outline-primary" value={complete} onClick={()=> activityComplete(todayActivity.id)} onChange={(e)=> setComplete(e.target.value)}>
+              {todayActivity.complete ? "complete": "not yet"}
+            </button>
+        </form>
         </td>
         <td>
-          <button onClick={()=> idAndToggle(todayActivity.id)}>Edit</button>
+          <button  className="btn btn-outline-success" onClick={()=> idAndToggle(todayActivity.id)}>Edit</button>
         </td>
         <td>
-          <button value={todayActivity.id} onClick={handleDeleteProfile}>Delete</button>
+          <button className="btn btn-outline-danger" value={todayActivity.id} onClick={handleDeleteProfile}>Delete</button>
         </td>
     </tr>
   )
-
 
  const table = (
  <div className="upcoming">
@@ -74,7 +75,6 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
           <th scope="col">LOCATION</th>
           <th scope="col">TIME</th>
           <th scope="col">MEMO</th>
-          <th scope="col">Done?</th>
           <th scope="col">Done?</th>
           <th scope="col">Change?</th>
           <th scope="col">Delete?</th>
@@ -141,7 +141,6 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
       </form>
     </div>
   )
-
 
   return (
     <div>

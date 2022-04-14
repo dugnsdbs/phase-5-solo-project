@@ -37,9 +37,8 @@ function ToDoList({user, setList, list, setActivity, activity}) {
   const titleBox = (
     <div  id="creatActivity">
       <form onSubmit={handleTitle}>     
-       <label className="todoLabel"> Title  </label>
-        <input type="text"  value={title} onChange={(e) => setTitle(e.target.value)}/>
-        <input  id="rightNavButton" className="btn btn-outline-info" onClick={handleShowActivity} type="submit"/>
+        <input type="text"  value={title} onChange={(e) => setTitle(e.target.value)} placeholder="ENTER TITLE"/>
+        <input  id="rightNavButton" className="btn btn-outline-dark" onClick={handleShowActivity} type="submit"/>
       </form>
     </div>
   )
@@ -97,12 +96,12 @@ function ToDoList({user, setList, list, setActivity, activity}) {
         <label className="todoLabel"> Start </label>
            <input type ="date"  value={date} onChange={(e) =>setDate(e.target.value)}/>
         <label className="todoLabel"> End  </label>
-           <input  type ="date"  value={endDate} onChange={(e) =>setEndDate(e.target.value)}/>
+           <input  type ="date"  value={endDate} onChange={(e) =>setEndDate(e.target.value)} />
         <label className="todoLabel"> Time  </label>
             <input  type ="time"  value={time} onChange={(e) =>setTime(e.target.value)}/>
         <label className="todoLabel"> Memo   </label>
              <input  type="text"value={memo} onChange={(e) =>setMemo(e.target.value)}/>
-            <input type="submit" id="rightNavButton" className="btn btn-outline-info"/>
+            <input type="submit" id="rightNavButton" className="btn btn-outline-dark"/>
       </form>
     </div>
   )

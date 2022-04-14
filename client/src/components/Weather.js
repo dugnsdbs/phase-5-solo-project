@@ -13,6 +13,7 @@ function Weather() {
       setUserCityWeather(response.data)
      })
   },[])
+
   useEffect(()=>{
     fetchWeather()
   },[userCityWeather]
@@ -41,37 +42,37 @@ function Weather() {
         <input  
           value={location}
           onChange={e => setLocation(e.target.value)}
-          placeholder="Enter Location"
+          placeholder="Enter City Name"
           onKeyPress={searchLocation}
         type="text" />
-        <input type="submit" className="btn btn-outline-info" id="rightNavButton" />
+        <input type="submit" className="btn btn-outline-dark"  id="rightNavButton" />
       </div>
      <div className="container">
        <div className="bottom">
           <div className="location">
-            <p>City</p>
+            <p>CITY</p>
             <p>{data.name}</p>
           </div>
           <div className="temp">
-            <p>Current Temp</p>
+            <p>CURRENT TEMP</p>
             { data.main ? <h1>{data.main.temp.toFixed()} °F</h1> : null }
           </div> 
           <div className="description">
-            <p>Description</p>
+            <p>DESCRIPTION</p>
             { data.weather ? <p>{data.weather[0].main}</p>: null }  
           </div>
        </div>
        <div className="bottom"> 
           <div className="feels">
-            <p>Feels Like</p>
+            <p>FEELS LIKE</p>
             { data.main ? <p className="bolds">{ data.main.feels_like.toFixed()} °F</p> : null }
           </div>
           <div className="humidity">
-            <p>Humidity</p>
+            <p>HUMIDITY</p>
             {data.main ? <p className="bolds">{data.main.humidity} % </p> : null}
           </div>
           <div className="wind">
-            <p>Wind Speed</p>
+            <p>WIND SPEED</p>
            {data.wind ? <p className="bolds"> {data.wind.speed.toFixed()} MPH</p> : null}
           </div>
        </div>

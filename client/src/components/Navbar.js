@@ -39,10 +39,10 @@ function Navbar({user, setUser,handleReroute}){
         :
         <div className="rightNavbar">
            <NavLink  to ="/signup">
-             <button className="btn btn-outline-success" >Signup</button>
+             <button id="rightNavButton"  className="btn btn-outline-success" >Signup</button>
           </NavLink>
           <NavLink  to ="/login">
-            <button className="btn btn-outline-dark">Login</button>
+            <button id="rightNavButton"  className="btn btn-outline-dark">Login</button>
           </NavLink>
         </div>
   )

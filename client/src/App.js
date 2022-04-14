@@ -69,13 +69,16 @@ function App() {
     // main diplay greeting
     const currentUser = (user ? 
     <div className="leftNavbar">
-      <h1>Remember ?</h1>
-      <p>Hi {user.name} !</p>
+      <h1>REMEMBER ?</h1>
+      <div className="userGreeting">
+        <img className="picture" width="100px" src={user.photo} alt=""/>
+        <p className="nameUser">Hi {user.name} !</p>
+      </div>
     </div>
     : 
-    <div className="greeting"> 
-      <h1>Remember ?</h1>
-      <span>Welcome!!</span> <br/>
+    <div className="leftNavbarGreeting"> 
+      <h1>REMEMBER ?</h1>
+      <span>WELCOME!!</span> <br/>
       <span>New Member ? "Signup" : "Login Please"</span>
     </div>
    )

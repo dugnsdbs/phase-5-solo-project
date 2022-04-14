@@ -50,14 +50,14 @@ function AllUserActivity({user, activity,handleDeleteProfile, setActivity}) {
           <td>{a.memo}</td>
           <td>
              <form onSubmit={handleEditCompelte}>
-                <button value={complete} onClick={()=> activityComplete(a.id)} onChange={(e)=> setComplete(e.target.value)}>{a.complete ? "complete": "not yet"}</button>
+                <button className="btn btn-outline-primary" value={complete} onClick={()=> activityComplete(a.id)} onChange={(e)=> setComplete(e.target.value)}>{a.complete ? "complete": "not yet"}</button>
               </form>
           </td>
           <td>
-            <button onClick={()=> idAndToggle(a.id)}>Edit</button>
+            <button className="btn btn-outline-success" onClick={()=> idAndToggle(a.id)}>Edit</button>
           </td>
           <td>
-            <button value={a.id} onClick={handleDeleteProfile}>Delete</button>
+            <button className="btn btn-outline-danger"  value={a.id} onClick={handleDeleteProfile}>Delete</button>
           </td> 
       </tr>
     )
@@ -108,7 +108,6 @@ function AllUserActivity({user, activity,handleDeleteProfile, setActivity}) {
     .then((r)=>r.json())
     .then((data)=> {
       fetchActivity()
-      console.log(data)
      })
     }
 

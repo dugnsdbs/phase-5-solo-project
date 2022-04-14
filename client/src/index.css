@@ -38,7 +38,7 @@ code {
   justify-content: right;
   position: relative;
   text-align: center;
-  padding: 10px 100px 10px 0; 
+  padding: 0px 100px 10px 0; 
   margin: 0 0 20px 0;
   font-weight: bold;
   /* border: solid; */
@@ -54,7 +54,8 @@ code {
 }
 
 ::placeholder{
-  color: black
+  color: grey;
+  font-weight: bold;
 }
 
 .app .bottom {
@@ -65,7 +66,8 @@ code {
   margin: 1rem auto;
   padding: 1rem;
   border-radius: 12px;
-  background-color: rgba(255,255,255,0.2)
+  background-color: rgba(255,255,255,0.2);
+  text-shadow: 1.5px 1.5px white;
 }
 
 .bolds{
@@ -113,10 +115,7 @@ code {
   /* margin: 5px 0 0 0; */
 }
 
-.greeting{
-  color: rgb(255, 255, 255);
-  padding: 0 0 0 50px;
-}
+
 
 .upcoming{
   display: flex;
@@ -142,15 +141,23 @@ code {
   padding: 10px 100px 0 0 ;
   display: flex;
   justify-content: space-evenly;
+
 }
 #rightNavButton{
   margin: 5px;
 }
 
+.leftNavbarGreeting{
+  color: rgb(255, 255, 255);
+  padding: 0 0 0 50px;
+  text-shadow: 1.5px 1.5px rgb(61, 41, 241, 1);
+}
+
 .leftNavbar{
   padding: 0 0 0 100px;
   font-size: 50px;
-  color: white
+  color: rgb(255, 255, 255);
+  text-shadow: 1.5px 1.5px rgb(61, 41, 241, 1);
 }
 
 .todo{
@@ -170,4 +177,18 @@ code {
 
 .todoLabel{
   margin: 5px
+}
+
+.picture{
+  border-radius: 50%;
+}
+
+.userGreeting{
+  display: flex;
+  justify-content:center;
+  margin: 10px;
+}
+
+.nameUser{
+  margin: 10px;
 }
