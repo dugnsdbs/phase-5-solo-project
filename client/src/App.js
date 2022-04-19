@@ -79,7 +79,7 @@ function App() {
     <div className="leftNavbarGreeting"> 
       <h1>REMEMBER ?</h1>
       <span>WELCOME!!</span> <br/>
-      <span>New Member ? "Signup" : "Login" Please!!</span>
+      <span>New Member ? "Signup" : "Login"</span>
     </div>
    )
 
