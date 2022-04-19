@@ -62,27 +62,46 @@ function Profile({user, setUser}) {
 
   const userProfile = (
     user ?
-    <div>
-      <img width="100px" src={user.photo} alt=""/>
-      <p>Username: {user.username}</p>
+    <div className="profile">
+      <img width="100px" src={user.photo} alt="" className="picture" style={{width: "300px"}}/>
+      <p >Username: {user.username}</p>
       <p>Name: {user.name.toUpperCase()}</p>
       <p>Email: {user.email}</p>
       <p>From: {user.city.toUpperCase()}</p>
-      <button onClick={refreshFetch}>Edit</button>
+      <button onClick={refreshFetch} className="btn btn-outline-success">Edit</button>
     </div>
     :null
     )
 
   const userEditProfile =(
-    <div>
+    <div className="profileEdit">
       <form onSubmit={handleEditProfile}>
-        <input type="text" value={photo} onChange={(e) => setPhoto(e.target.value)}/> 
-        <input type="text" value={username} onChange={(e) => setusername(e.target.value)}/> 
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)}/> 
-        <input type="text" value={city} onChange={(e) => setCity(e.target.value)}/> 
-        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/> 
-        <input type="submit"/> 
-        <button onClick={refreshFetch}>Cancel</button>
+        <label>Picture</label>
+        <div>
+          <input type="text" value={photo} onChange={(e) => setPhoto(e.target.value)}/> 
+        </div>
+          <label>Username</label>
+        <div>
+         
+          <input type="text" value={username} onChange={(e) => setusername(e.target.value)}/> 
+        </div>
+          <label>Name</label>
+        <div>
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)}/> 
+        </div>
+          <label>City</label>
+        <div>
+          <input type="text" value={city} onChange={(e) => setCity(e.target.value)}/> 
+        </div>
+          <label>Email</label>
+        <div>
+          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/> 
+        </div>
+        <br/>
+        <div>
+          <button className="btn btn-outline-primary">Submit</button>
+          <button onClick={refreshFetch} className="btn btn-outline-danger">Cancel</button>
+        </div>
       </form>
     </div>
   )
@@ -91,7 +110,7 @@ function Profile({user, setUser}) {
     <div>
       <br/>
       <div>
-        <h1>Profile</h1>
+        <h1 className="profile">Profile</h1>
         <div>
          { edit ? userEditProfile : userProfile }
          </div> 

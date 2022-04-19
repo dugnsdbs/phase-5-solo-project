@@ -136,8 +136,8 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
         <input type="date" value={endDate} onChange={(e)=> setEndDate(e.target.value)}/>
         <input type="time" value={time} onChange={(e)=> setTime(e.target.value)}/>
         <input type="text" value={memo} onChange={(e)=> setMemo(e.target.value)} placeholder="New memo"/>
-        <input type="submit"/>
-        <button onClick={idAndToggle}>Cancel</button>
+        <button className="btn btn-outline-primary">Submit</button>
+        <button onClick={idAndToggle} className="btn btn-outline-danger">Cancel</button>
       </form>
     </div>
   )
@@ -152,3 +152,4 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
 }
 
 export default TodayUserActivity
+
