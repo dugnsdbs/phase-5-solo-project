@@ -51,7 +51,7 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
         <td>
         <form onSubmit={handleEditCompelte}>
            <button className="btn btn-outline-primary" value={complete} onClick={()=> activityComplete(todayActivity.id)} onChange={(e)=> setComplete(e.target.value)}>
-              {todayActivity.complete ? "complete": "not yet"}
+              {todayActivity.complete ? "Done": "not yet"}
             </button>
         </form>
         </td>

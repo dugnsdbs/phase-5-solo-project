@@ -50,7 +50,7 @@ function AllUserActivity({user, activity,handleDeleteProfile, setActivity}) {
           <td>{a.memo}</td>
           <td>
              <form onSubmit={handleEditCompelte}>
-                <button className="btn btn-outline-primary" value={complete} onClick={()=> activityComplete(a.id)} onChange={(e)=> setComplete(e.target.value)}>{a.complete ? "complete": "not yet"}</button>
+                <button className="btn btn-outline-primary" value={complete} onClick={()=> activityComplete(a.id)} onChange={(e)=> setComplete(e.target.value)}>{a.complete ? "Done": "not yet"}</button>
               </form>
           </td>
           <td>
