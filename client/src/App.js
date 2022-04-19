@@ -124,7 +124,7 @@ function App() {
               <LogOut setUser={setUser} handleReroute={handleReroute}/>
             </div>
           </Route>
-          <Route exact path = "/me">
+          <Route exact path = "/profile">
             <div>
               <Profile user={user} handleReroute={handleReroute} setUser={setUser}/>
             </div>

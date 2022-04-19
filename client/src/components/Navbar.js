@@ -27,7 +27,7 @@ function Navbar({user, setUser,handleReroute}){
             </NavLink>
           </li>
           <li className="nav-item">
-          <NavLink to ="/me">
+          <NavLink to ="/profile">
               <button id="rightNavButton"  className="btn btn-outline-warning" >Profile</button>
             </NavLink>  
           </li>
