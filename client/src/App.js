@@ -69,7 +69,7 @@ function App() {
     // main diplay greeting
     const currentUser = (user ? 
     <div className="leftNavbar">
-      <h1>REMEMBER ?</h1>
+      <h1>REMEMBER ??</h1>
       <div className="userGreeting">
         <img className="picture" width="100px" src={user.photo} alt=""/>
         <p className="nameUser">Hi {user.name} !</p>
@@ -77,7 +77,7 @@ function App() {
     </div>
     : 
     <div className="leftNavbarGreeting"> 
-      <h1>REMEMBER ?</h1>
+      <h1>REMEMBER ??</h1>
       <span>WELCOME!!</span> <br/>
       <span>New Member ? "Signup" : "Login"</span>
     </div>

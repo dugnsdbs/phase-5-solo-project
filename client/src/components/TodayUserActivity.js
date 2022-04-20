@@ -88,7 +88,13 @@ function TodayUserActivity({user, activity, handleDeleteProfile, setActivity}) {
  )
  
   const displayTodayActivity = (
-    userTodayActivity.length > 0 ? table : <p className="appointment">"No Appointment Today !!!"</p>
+    userTodayActivity.length > 0 ? 
+    <div>
+      <div className="todoListTitle">
+        <h1>Today ToDo List!!</h1>
+      </div>
+      {table}
+    </div> : <p className="appointment">"No Appointment Today !!!"</p>
   )
 
   function fetchActivity(){

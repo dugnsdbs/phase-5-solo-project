@@ -69,7 +69,7 @@ function SignUp({ handleReroute }) {
           <input className="btn btn-outline-light" type="text" placeholder="Photo" value={photo} onChange={(e) => setPhoto(e.target.value)}/>
         </div>
         <div className="loginButton">
-          <button  className="btn btn-outline-dark" type="submit">Submit</button>
+          <button  className="btn btn-outline-dark" type="submit">Sign Up</button>
         </div>
    
       </form>

@@ -144,7 +144,7 @@ code {
 
 }
 #rightNavButton{
-  margin: 5px;
+  margin: 2px;
 }
 
 .leftNavbarGreeting{
@@ -203,4 +203,14 @@ code {
   text-align: center;
   margin: 10px;
   font-size: 20px;
+}
+
+.todoListTitle{
+  font-size: 50px;
+  text-align: center;
+  margin: 20px 0 30px 0;
+  /* color: rgb(255, 255, 255);
+  text-shadow: 1.5px 1.5px rgb(61, 41, 241, 1); */
+  color: rgb(62, 9, 255);
+  text-shadow: 1.5px 1.5px rgb(255, 255, 255);
 }

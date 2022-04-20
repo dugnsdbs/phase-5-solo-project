@@ -99,7 +99,7 @@ function Profile({user, setUser}) {
         </div>
         <br/>
         <div>
-          <button className="btn btn-outline-primary">Submit</button>
+          <button className="btn btn-outline-primary">Change</button>
           <button onClick={refreshFetch} className="btn btn-outline-danger">Cancel</button>
         </div>
       </form>

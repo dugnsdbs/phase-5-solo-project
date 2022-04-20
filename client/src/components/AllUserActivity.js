@@ -87,7 +87,13 @@ function AllUserActivity({user, activity,handleDeleteProfile, setActivity}) {
     )
 
   const diplayUpcomingActivity = (
-    userActivities.length > 0 ? table : <p className="appointment">"No Upcoming Appintment!!! "</p>
+    userActivities.length > 0 ? 
+    <div>
+      <div className="todoListTitle">
+        <h1>All Todo List!!</h1>
+      </div>
+      {table}
+    </div> : <p className="appointment">"No Upcoming Appintment!!! "</p>
   )
 
   function fetchActivity(){
